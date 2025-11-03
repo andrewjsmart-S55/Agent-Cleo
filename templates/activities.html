@@ -1,0 +1,265 @@
+{% extends "base.html" %}
+
+{% block title %}Activities - AI Agent Manager{% endblock %}
+
+{% block content %}
+<div x-data="activityFeed()" x-init="init()">
+    <!-- Header -->
+    <div class="px-4 py-5 sm:px-6 bg-white rounded-lg shadow mb-6">
+        <div class="flex justify-between items-center">
+            <div>
+                <h2 class="text-2xl font-bold text-gray-900">Activity Feed</h2>
+                <p class="mt-1 text-sm text-gray-500">Track all outputs and activities from your agents</p>
+            </div>
+            <button @click="refreshActivities()" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                </svg>
+                Refresh
+            </button>
+        </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="bg-white shadow rounded-lg p-4 mb-6">
+        <div class="flex flex-wrap items-center gap-4">
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Agent</label>
+                <select x-model="filters.agent_id" @change="filterActivities()" class="border-gray-300 rounded-lg text-sm">
+                    <option value="">All Agents</option>
+                    <template x-for="agent in agents" :key="agent.id">
+                        <option :value="agent.id" x-text="agent.name"></option>
+                    </template>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                <select x-model="filters.status" @change="filterActivities()" class="border-gray-300 rounded-lg text-sm">
+                    <option value="">All Statuses</option>
+                    <option value="success">Success</option>
+                    <option value="failed">Failed</option>
+                    <option value="in_progress">In Progress</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Limit</label>
+                <select x-model="filters.limit" @change="filterActivities()" class="border-gray-300 rounded-lg text-sm">
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="200">200</option>
+                </select>
+            </div>
+
+            <div class="ml-auto">
+                <label class="block text-sm font-medium text-gray-700 mb-1">&nbsp;</label>
+                <button @click="clearFilters()" class="border border-gray-300 hover:bg-gray-50 px-4 py-2 rounded-lg text-sm">
+                    Clear Filters
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Activity Timeline -->
+    <div class="bg-white shadow rounded-lg overflow-hidden">
+        <div x-show="filteredActivities.length === 0" class="text-center py-12">
+            <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+            <h3 class="mt-2 text-sm font-medium text-gray-900">No activities found</h3>
+            <p class="mt-1 text-sm text-gray-500">Activities will appear here when your agents produce outputs</p>
+        </div>
+
+        <div class="flow-root px-6 py-4">
+            <ul class="-mb-8">
+                <template x-for="(activity, index) in filteredActivities" :key="activity.id">
+                    <li>
+                        <div class="relative pb-8">
+                            <!-- Timeline connector -->
+                            <span x-show="index < filteredActivities.length - 1" class="absolute top-5 left-5 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
+
+                            <div class="relative flex items-start space-x-3">
+                                <!-- Icon -->
+                                <div>
+                                    <div class="relative px-1">
+                                        <div class="h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white"
+                                             :class="getStatusBgColor(activity.status)">
+                                            <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                      :d="activity.status === 'success' ? 'M5 13l4 4L19 7' : activity.status === 'failed' ? 'M6 18L18 6M6 6l12 12' : 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Content -->
+                                <div class="min-w-0 flex-1">
+                                    <div>
+                                        <div class="text-sm">
+                                            <span class="font-medium text-gray-900" x-text="activity.agent_name"></span>
+                                            <span x-show="activity.job_name" class="text-gray-500">
+                                                - <span x-text="activity.job_name"></span>
+                                            </span>
+                                        </div>
+                                        <p class="mt-0.5 text-xs text-gray-500" x-text="formatDate(activity.created_at)"></p>
+                                    </div>
+                                    <div class="mt-2 text-sm text-gray-700">
+                                        <h4 class="font-semibold" x-text="activity.title"></h4>
+                                        <p x-show="activity.summary" class="mt-1 text-gray-600" x-text="activity.summary"></p>
+
+                                        <!-- Output Files -->
+                                        <div x-show="getOutputFiles(activity).length > 0" class="mt-3">
+                                            <details class="group">
+                                                <summary class="cursor-pointer text-blue-600 hover:text-blue-700 text-sm font-medium flex items-center">
+                                                    <svg class="w-4 h-4 mr-1 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                                    </svg>
+                                                    <span x-text="`Output Files (${getOutputFiles(activity).length})`"></span>
+                                                </summary>
+                                                <div class="mt-2 ml-5 space-y-1">
+                                                    <template x-for="file in getOutputFiles(activity)" :key="file.name || file">
+                                                        <div class="flex items-center text-xs bg-gray-50 p-2 rounded border border-gray-200">
+                                                            <svg class="w-4 h-4 mr-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                                            </svg>
+                                                            <span class="flex-1 font-mono" x-text="file.name || file"></span>
+                                                            <span x-show="file.size_formatted" class="text-gray-500 ml-2" x-text="file.size_formatted"></span>
+                                                        </div>
+                                                    </template>
+                                                </div>
+                                            </details>
+                                        </div>
+                                    </div>
+
+                                    <!-- Status Badge -->
+                                    <div class="mt-2">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium"
+                                              :class="getStatusColor(activity.status)"
+                                              x-text="activity.status"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </template>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function activityFeed() {
+    return {
+        activities: [],
+        agents: [],
+        filters: {
+            agent_id: '',
+            status: '',
+            limit: 50
+        },
+
+        get filteredActivities() {
+            let filtered = [...this.activities];
+
+            if (this.filters.agent_id) {
+                filtered = filtered.filter(a => a.agent_id == this.filters.agent_id);
+            }
+
+            if (this.filters.status) {
+                filtered = filtered.filter(a => a.status === this.filters.status);
+            }
+
+            return filtered.slice(0, this.filters.limit);
+        },
+
+        async init() {
+            await this.loadAgents();
+            await this.loadActivities();
+
+            // Check for agent_id in URL params
+            const params = new URLSearchParams(window.location.search);
+            const agentId = params.get('agent_id');
+            if (agentId) {
+                this.filters.agent_id = agentId;
+            }
+        },
+
+        async loadAgents() {
+            const response = await fetch('/api/agents');
+            this.agents = await response.json();
+        },
+
+        async loadActivities() {
+            const response = await fetch(`/api/activities?limit=200`);
+            this.activities = await response.json();
+        },
+
+        async refreshActivities() {
+            await this.loadActivities();
+            showToast('Activities refreshed', 'success');
+        },
+
+        filterActivities() {
+            // Filtering is reactive via computed property
+        },
+
+        clearFilters() {
+            this.filters = {
+                agent_id: '',
+                status: '',
+                limit: 50
+            };
+        },
+
+        getOutputFiles(activity) {
+            if (!activity.output_files) return [];
+            try {
+                const files = JSON.parse(activity.output_files);
+                return Array.isArray(files) ? files : [];
+            } catch {
+                return [];
+            }
+        },
+
+        getStatusColor(status) {
+            const colors = {
+                'success': 'bg-green-100 text-green-800',
+                'failed': 'bg-red-100 text-red-800',
+                'in_progress': 'bg-blue-100 text-blue-800'
+            };
+            return colors[status] || 'bg-gray-100 text-gray-800';
+        },
+
+        getStatusBgColor(status) {
+            const colors = {
+                'success': 'bg-green-500',
+                'failed': 'bg-red-500',
+                'in_progress': 'bg-blue-500'
+            };
+            return colors[status] || 'bg-gray-500';
+        },
+
+        formatDate(dateString) {
+            if (!dateString) return '';
+            const date = new Date(dateString);
+            const now = new Date();
+            const diffMs = now - date;
+            const diffMins = Math.floor(diffMs / 60000);
+            const diffHours = Math.floor(diffMs / 3600000);
+            const diffDays = Math.floor(diffMs / 86400000);
+
+            if (diffMins < 1) return 'Just now';
+            if (diffMins < 60) return `${diffMins} minute${diffMins > 1 ? 's' : ''} ago`;
+            if (diffHours < 24) return `${diffHours} hour${diffHours > 1 ? 's' : ''} ago`;
+            if (diffDays < 7) return `${diffDays} day${diffDays > 1 ? 's' : ''} ago`;
+
+            return date.toLocaleString();
+        }
+    }
+}
+</script>
+{% endblock %}

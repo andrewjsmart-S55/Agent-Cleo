@@ -1,0 +1,584 @@
+========================================================================================================================
+FINANCIALS SHEET - COMPLETE DATA REVIEW
+========================================================================================================================
+
+FULL DATA TABLE VIEW:
+========================================================================================================================
+
+Column Reference:
+   1. Level
+   2. Hierarchy (Dimension - Element - Sub-Element)
+   3. Description
+   4. Business Drivers
+   5. Business Drivers Description
+   6. Performance Factors
+   7. Performance Factors Description
+   8. Risk Factors
+   9. Risk Factors Description
+  10. Metric / Data Point / Ratio /Question
+  11. Description
+  12. Unit of Measure
+  13. Target
+  14. Data Collection Instructions
+
+------------------------------------------------------------------------------------------------------------------------
+
+ROW  | Level                     | Hierarchy (Dimension - Element - Sub-Element) | Description               | Business Drivers          | Business Drivers Description | 
+------------------------------------------------------------------------------------------------------------------------
+2    | 1                         | Financials                | Financial health, perf... | Value Creation & Prese... | Financial capability t... | 
+3    | 2                         | Financials - Costs        | Total cost structure a... | Operational Efficiency    | Ability to deliver pro... | 
+4    | 3                         | Financials - Costs - O... | Day-to-day operational... | Business Activity Volume  | Scale of operations di... | 
+5    | 3                         | Financials - Costs - C... | Direct costs attributa... | Revenue Volume            | Direct correlation bet... | 
+6    | 3                         | Financials - Costs - F... | Proportion of costs th... | Business Model Structure  | Asset intensity and op... | 
+7    | 3                         | Financials - Costs - C... | Volatility and forecas... | Cost Control Maturity     | Quality of budgeting, ... | 
+8    | 2                         | Financials - Revenue      | Top-line revenue gener... | Market Demand & Sales ... | Ability to attract cus... | 
+9    | 3                         | Financials - Revenue -... | Gross revenue before a... | Commercial Success        | Market acceptance of v... | 
+10   | 3                         | Financials - Revenue -... | Spread of revenue acro... | Portfolio Strategy        | Deliberate choice to s... | 
+11   | 3                         | Financials - Revenue -... | Predictability, recurr... | Business Model Economics  | Recurring revenue mode... | 
+12   | 3                         | Financials - Revenue -... | Portion of revenue vul... | External & Internal Ri... | Market changes, compet... | 
+13   | 2                         | Financials - Profit       | Bottom-line profitabil... | Revenue - Costs Spread    | Ability to generate re... | 
+14   | 3                         | Financials - Profit - ... | Profitability after di... | Pricing Power & Produc... | Ability to price above... | 
+15   | 3                         | Financials - Profit - ... | Profitability from cor... | Operational Execution     | Efficiency of converti... | 
+16   | 3                         | Financials - Profit - ... | Bottom-line profitabil... | Total Financial Manage... | Comprehensive efficien... | 
+17   | 3                         | Financials - Profit - ... | Stability and predicta... | Business Model Stability  | Recurring revenue and ... | 
+18   | 2                         | Financials - Capital      | Capital structure, eff... | Growth Funding & Capit... | Ability to fund operat... | 
+19   | 3                         | Financials - Capital -... | Short-term capital req... | Operating Cycle Requir... | Cash conversion cycle ... | 
+20   | 3                         | Financials - Capital -... | Investment in long-ter... | Growth & Maintenance R... | Need to invest in capa... | 
+21   | 3                         | Financials - Capital -... | Total debt obligations... | Financing Strategy        | Use of debt to fund gr... | 
+22   | 3                         | Financials - Capital -... | Profitability relative... | Capital Allocation Exc... | Deploying capital to h... | 
+23   | 2                         | Financials - Liquidity    | Cash flow generation a... | Cash Conversion & Trea... | Ability to generate ca... | 
+24   | 3                         | Financials - Liquidity... | Cash generated from co... | Profitability + Workin... | Converting earnings to... | 
+25   | 3                         | Financials - Liquidity... | Available cash and cas... | Liquidity Buffer Strategy | Maintaining reserves f... | 
+26   | 3                         | Financials - Liquidity... | Cash available after c... | Investment Discipline     | Generating cash in exc... | 
+27   | 3                         | Financials - Liquidity... | Time to convert operat... | Working Capital Effici... | Speed of collecting re... | 
+28   | 2                         | Financials - Accuracy ... | Quality, reliability, ... | Financial Governance &... | Robust financial syste... | 
+29   | 3                         | Financials - Accuracy ... | Time required to close... | Process Automation & C... | Efficient systems and ... | 
+30   | 3                         | Financials - Accuracy ... | External audit opinion... | Control Environment St... | Strong controls result... | 
+31   | 3                         | Financials - Accuracy ... | Reliability of financi... | Planning & Budgeting M... | Quality of assumptions... | 
+32   | 3                         | Financials - Accuracy ... | Transparency and compl... | Stakeholder Communicat... | Commitment to transpar... | 
+
+------------------------------------------------------------------------------------------------------------------------
+
+DETAILED ROW-BY-ROW ANALYSIS:
+========================================================================================================================
+
+ROW 1:
+------------------------------------------------------------------------------------------------------------------------
+   [ 1] Level                                   : Level
+   [ 2] Hierarchy (Dimension - Element - Sub-Element): Hierarchy (Dimension - Element - Sub-Element)
+   [ 3] Description                             : Description
+   [ 4] Business Drivers                        : Business Drivers
+   [ 5] Business Drivers Description            : Business Drivers Description
+   [ 6] Performance Factors                     : Performance Factors
+   [ 7] Performance Factors Description         : Performance Factors Description
+   [ 8] Risk Factors                            : Risk Factors
+   [ 9] Risk Factors Description                : Risk Factors Description
+   [10] Metric / Data Point / Ratio /Question   : Metric / Data Point / Ratio /Question
+   [11] Description                             : Description
+   [12] Unit of Measure                         : Unit of Measure
+   [13] Target                                  : Target
+   [14] Data Collection Instructions            : Data Collection Instructions
+
+ROW 2:
+------------------------------------------------------------------------------------------------------------------------
+   [ 1] Level                                   : 1
+   [ 2] Hierarchy (Dimension - Element - Sub-Element): Financials
+   [ 3] Description                             : Financial health, performance, and sustainability of the organization
+   [ 4] Business Drivers                        : Value Creation & Preservation
+   [ 5] Business Drivers Description            : Financial capability to execute strategy while managing risk exposure
+   [ 6] Performance Factors                     : Financial Strength & Efficiency
+   [ 7] Performance Factors Description         : Ability to fund operations, invest in growth, and deliver returns
+   [ 8] Risk Factors                            : Financial Instability
+   [ 9] Risk Factors Description                : Exposure to financial distress, liquidity crisis, or value destruction
+   [14] Data Collection Instructions            : Aggregate of all financial elements - auto-calculated from Level 2
+
+ROW 3:
+------------------------------------------------------------------------------------------------------------------------
+   [ 1] Level                                   : 2
+   [ 2] Hierarchy (Dimension - Element - Sub-Element): Financials - Costs
+   [ 3] Description                             : Total cost structure and cost management effectiveness
+   [ 4] Business Drivers                        : Operational Efficiency
+   [ 5] Business Drivers Description            : Ability to deliver products/services at competitive cost levels
+   [ 6] Performance Factors                     : Cost Optimization
+   [ 7] Performance Factors Description         : Efficient resource utilization and cost control
+   [ 8] Risk Factors                            : Cost Overrun & Inflation
+   [ 9] Risk Factors Description                : Unplanned cost increases eroding margins and profitability
+   [14] Data Collection Instructions            : Aggregate of cost sub-elements - auto-calculated from Level 3
+
+ROW 4:
+------------------------------------------------------------------------------------------------------------------------
+   [ 1] Level                                   : 3
+   [ 2] Hierarchy (Dimension - Element - Sub-Element): Financials - Costs - Operating Expenses (Opex)
+   [ 3] Description                             : Day-to-day operational costs required to run the business
+   [ 4] Business Drivers                        : Business Activity Volume
+   [ 5] Business Drivers Description            : Scale of operations directly drives operating cost levels
+   [ 6] Performance Factors                     : Opex Efficiency Ratio
+   [ 7] Performance Factors Description         : Operating expenses as % of revenue - lower indicates better efficiency
+   [ 8] Risk Factors                            : Opex Overrun
+   [ 9] Risk Factors Description                : Operating costs exceeding budget due to inflation, inefficiency, or scope creep
+   [10] Metric / Data Point / Ratio /Question   : Total Annual Operating Expenses
+   [11] Description                             : Sum of all recurring operational costs (excluding COGS, depreciation, interest)
+   [12] Unit of Measure                         : Currency (aligned to Base Data)
+   [13] Target                                  : Industry benchmark ±10%
+   [14] Data Collection Instructions            : Include: salaries, rent, utilities, marketing, admin, IT operations, travel, professional fees
+
+ROW 5:
+------------------------------------------------------------------------------------------------------------------------
+   [ 1] Level                                   : 3
+   [ 2] Hierarchy (Dimension - Element - Sub-Element): Financials - Costs - Cost of Goods Sold (COGS)
+   [ 3] Description                             : Direct costs attributable to production of goods/services sold
+   [ 4] Business Drivers                        : Revenue Volume
+   [ 5] Business Drivers Description            : Direct correlation between units sold and production costs
+   [ 6] Performance Factors                     : Gross Margin
+   [ 7] Performance Factors Description         : Revenue minus COGS as % of revenue - measures pricing power and efficiency
+   [ 8] Risk Factors                            : Input Cost Inflation
+   [ 9] Risk Factors Description                : Supplier price increases, commodity volatility, or supply chain disruption
+   [10] Metric / Data Point / Ratio /Question   : Total Annual COGS
+   [11] Description                             : Direct materials, direct labor, and manufacturing overhead
+   [12] Unit of Measure                         : Currency
+   [13] Target                                  : Maintain or improve gross margin % YoY
+   [14] Data Collection Instructions            : Include only variable costs directly tied to production/delivery. Exclude fixed overhead.
+
+ROW 6:
+------------------------------------------------------------------------------------------------------------------------
+   [ 1] Level                                   : 3
+   [ 2] Hierarchy (Dimension - Element - Sub-Element): Financials - Costs - Fixed vs Variable Cost Ratio
+   [ 3] Description                             : Proportion of costs that are fixed vs variable with volume
+   [ 4] Business Drivers                        : Business Model Structure
+   [ 5] Business Drivers Description            : Asset intensity and operating leverage determine cost structure
+   [ 6] Performance Factors                     : Operating Leverage
+   [ 7] Performance Factors Description         : Higher fixed costs = higher sensitivity to volume changes (risk + opportunity)
+   [ 8] Risk Factors                            : Fixed Cost Burden
+   [ 9] Risk Factors Description                : High fixed costs create breakeven risk if volumes decline
+   [10] Metric / Data Point / Ratio /Question   : Fixed Costs as % of Total Costs
+   [11] Description                             : Percentage of costs that don't vary with output (rent, salaries, depreciation)
+   [12] Unit of Measure                         : Percentage
+   [13] Target                                  : Aligned to business model strategy
+   [14] Data Collection Instructions            : Fixed costs / (Fixed costs + Variable costs) × 100. Track quarterly.
+
+ROW 7:
+------------------------------------------------------------------------------------------------------------------------
+   [ 1] Level                                   : 3
+   [ 2] Hierarchy (Dimension - Element - Sub-Element): Financials - Costs - Cost Predictability
+   [ 3] Description                             : Volatility and forecastability of cost base
+   [ 4] Business Drivers                        : Cost Control Maturity
+   [ 5] Business Drivers Description            : Quality of budgeting, forecasting, and cost management processes
+   [ 6] Performance Factors                     : Forecast Accuracy
+   [ 7] Performance Factors Description         : Actual costs vs budget variance - tighter variance = better control
+   [ 8] Risk Factors                            : Cost Volatility
+   [ 9] Risk Factors Description                : Unpredictable cost swings create budgeting risk and margin uncertainty
+   [10] Metric / Data Point / Ratio /Question   : Actual vs Budget Cost Variance
+   [11] Description                             : Percentage difference between actual and budgeted costs
+   [12] Unit of Measure                         : Percentage
+   [13] Target                                  : ±5% variance
+   [14] Data Collection Instructions            : Calculate monthly: (Actual Costs - Budgeted Costs) / Budgeted Costs × 100
+
+ROW 8:
+------------------------------------------------------------------------------------------------------------------------
+   [ 1] Level                                   : 2
+   [ 2] Hierarchy (Dimension - Element - Sub-Element): Financials - Revenue
+   [ 3] Description                             : Top-line revenue generation and quality
+   [ 4] Business Drivers                        : Market Demand & Sales Execution
+   [ 5] Business Drivers Description            : Ability to attract customers and convert demand into revenue
+   [ 6] Performance Factors                     : Revenue Growth & Quality
+   [ 7] Performance Factors Description         : Sustainable, diversified revenue growth at attractive margins
+   [ 8] Risk Factors                            : Revenue Shortfall & Concentration
+   [ 9] Risk Factors Description                : Failure to meet revenue targets or over-dependence on few sources
+   [14] Data Collection Instructions            : Aggregate of revenue sub-elements - auto-calculated from Level 3
+
+ROW 9:
+------------------------------------------------------------------------------------------------------------------------
+   [ 1] Level                                   : 3
+   [ 2] Hierarchy (Dimension - Element - Sub-Element): Financials - Revenue - Total Revenue
+   [ 3] Description                             : Gross revenue before any deductions
+   [ 4] Business Drivers                        : Commercial Success
+   [ 5] Business Drivers Description            : Market acceptance of value proposition translates to revenue
+   [ 6] Performance Factors                     : Revenue Growth Rate
+   [ 7] Performance Factors Description         : Year-over-year percentage increase in total revenue
+   [ 8] Risk Factors                            : Revenue Stagnation
+   [ 9] Risk Factors Description                : Flat or declining revenue indicating market share loss or market maturity
+   [10] Metric / Data Point / Ratio /Question   : Annual Gross Revenue
+   [11] Description                             : Total revenue from all sources before returns, allowances, or discounts
+   [12] Unit of Measure                         : Currency
+   [13] Target                                  : Strategic plan target (typically 10-30% CAGR for growth companies)
+   [14] Data Collection Instructions            : Sum all revenue streams. Use accrual accounting. Report in consistent currency.
+
+ROW 10:
+------------------------------------------------------------------------------------------------------------------------
+   [ 1] Level                                   : 3
+   [ 2] Hierarchy (Dimension - Element - Sub-Element): Financials - Revenue - Revenue Diversification
+   [ 3] Description                             : Spread of revenue across products, customers, and geographies
+   [ 4] Business Drivers                        : Portfolio Strategy
+   [ 5] Business Drivers Description            : Deliberate choice to serve multiple segments reduces concentration risk
+   [ 6] Performance Factors                     : Diversification Index
+   [ 7] Performance Factors Description         : Herfindahl-Hirschman Index (HHI) - lower = more diversified
+   [ 8] Risk Factors                            : Revenue Concentration Risk
+   [ 9] Risk Factors Description                : Over-dependence on single customer, product, or geography creates volatility
+   [10] Metric / Data Point / Ratio /Question   : Revenue Concentration (Top 3 Sources)
+   [11] Description                             : Percentage of total revenue from top 3 customers, products, or regions (highest)
+   [12] Unit of Measure                         : Percentage
+   [13] Target                                  : <30% from any single source
+   [14] Data Collection Instructions            : Calculate for customers, products, and geographies. Report highest concentration.
+
+ROW 11:
+------------------------------------------------------------------------------------------------------------------------
+   [ 1] Level                                   : 3
+   [ 2] Hierarchy (Dimension - Element - Sub-Element): Financials - Revenue - Revenue Quality
+   [ 3] Description                             : Predictability, recurrence, and margin quality of revenue
+   [ 4] Business Drivers                        : Business Model Economics
+   [ 5] Business Drivers Description            : Recurring revenue models provide higher quality, more predictable revenue
+   [ 6] Performance Factors                     : Recurring Revenue Ratio
+   [ 7] Performance Factors Description         : Percentage of revenue from subscriptions, contracts, or repeat customers
+   [ 8] Risk Factors                            : Revenue Unpredictability
+   [ 9] Risk Factors Description                : High proportion of one-time or spot revenue creates forecasting uncertainty
+   [10] Metric / Data Point / Ratio /Question   : Recurring Revenue as % of Total
+   [11] Description                             : Contracted, subscription, or repeat customer revenue / total revenue
+   [12] Unit of Measure                         : Percentage
+   [13] Target                                  : >60% for SaaS/subscription models; >40% for B2B; varies by business model
+   [14] Data Collection Instructions            : Include only revenue with contractual commitment or historical >80% repeat rate
+
+ROW 12:
+------------------------------------------------------------------------------------------------------------------------
+   [ 1] Level                                   : 3
+   [ 2] Hierarchy (Dimension - Element - Sub-Element): Financials - Revenue - Revenue at Risk
+   [ 3] Description                             : Portion of revenue vulnerable to identified threats
+   [ 4] Business Drivers                        : External & Internal Risk Events
+   [ 5] Business Drivers Description            : Market changes, competition, operational failures can threaten revenue
+   [ 6] Performance Factors                     : Revenue Defense Capability
+   [ 7] Performance Factors Description         : Strength of competitive moat, customer relationships, and contract terms
+   [ 8] Risk Factors                            : Revenue Loss Exposure
+   [ 9] Risk Factors Description                : Identifiable threats that could materially reduce revenue
+   [10] Metric / Data Point / Ratio /Question   : Estimated Revenue at Risk (12-month horizon)
+   [11] Description                             : Sum of revenue exposed to known risks weighted by probability
+   [12] Unit of Measure                         : Currency
+   [13] Target                                  : <10% of annual revenue
+   [14] Data Collection Instructions            : Assess: contract renewals at risk, competitive threats, market shifts, key customer churn
+
+ROW 13:
+------------------------------------------------------------------------------------------------------------------------
+   [ 1] Level                                   : 2
+   [ 2] Hierarchy (Dimension - Element - Sub-Element): Financials - Profit
+   [ 3] Description                             : Bottom-line profitability and margin sustainability
+   [ 4] Business Drivers                        : Revenue - Costs Spread
+   [ 5] Business Drivers Description            : Ability to generate revenue in excess of all costs
+   [ 6] Performance Factors                     : Margin Excellence
+   [ 7] Performance Factors Description         : Achieving target margins across gross, operating, and net levels
+   [ 8] Risk Factors                            : Margin Compression
+   [ 9] Risk Factors Description                : Squeeze on profitability from cost inflation or price pressure
+   [14] Data Collection Instructions            : Aggregate of profit sub-elements - auto-calculated from Level 3
+
+ROW 14:
+------------------------------------------------------------------------------------------------------------------------
+   [ 1] Level                                   : 3
+   [ 2] Hierarchy (Dimension - Element - Sub-Element): Financials - Profit - Gross Profit Margin
+   [ 3] Description                             : Profitability after direct costs of production
+   [ 4] Business Drivers                        : Pricing Power & Production Efficiency
+   [ 5] Business Drivers Description            : Ability to price above cost of goods and maintain efficiency
+   [ 6] Performance Factors                     : Gross Margin %
+   [ 7] Performance Factors Description         : (Revenue - COGS) / Revenue - measures unit economics
+   [ 8] Risk Factors                            : Margin Erosion
+   [ 9] Risk Factors Description                : Price competition or cost inflation reducing gross profitability
+   [10] Metric / Data Point / Ratio /Question   : Gross Profit Margin %
+   [11] Description                             : Percentage of revenue remaining after direct production costs
+   [12] Unit of Measure                         : Percentage
+   [13] Target                                  : Industry-specific: SaaS 70-80%, Manufacturing 30-40%, Retail 20-30%
+   [14] Data Collection Instructions            : (Revenue - COGS) / Revenue × 100. Calculate quarterly, track trend.
+
+ROW 15:
+------------------------------------------------------------------------------------------------------------------------
+   [ 1] Level                                   : 3
+   [ 2] Hierarchy (Dimension - Element - Sub-Element): Financials - Profit - Operating Profit (EBIT)
+   [ 3] Description                             : Profitability from core operations before interest and tax
+   [ 4] Business Drivers                        : Operational Execution
+   [ 5] Business Drivers Description            : Efficiency of converting revenue to operating profit
+   [ 6] Performance Factors                     : Operating Margin %
+   [ 7] Performance Factors Description         : EBIT as % of revenue - measures operational efficiency
+   [ 8] Risk Factors                            : Operating Leverage Risk
+   [ 9] Risk Factors Description                : Small revenue changes create large profit swings if operating leverage is high
+   [10] Metric / Data Point / Ratio /Question   : EBIT Margin %
+   [11] Description                             : (Revenue - COGS - Opex) / Revenue
+   [12] Unit of Measure                         : Percentage
+   [13] Target                                  : Varies by industry: Tech 20-30%, Services 10-15%, Manufacturing 5-10%
+   [14] Data Collection Instructions            : Exclude non-operating items. Report both $ amount and % margin.
+
+ROW 16:
+------------------------------------------------------------------------------------------------------------------------
+   [ 1] Level                                   : 3
+   [ 2] Hierarchy (Dimension - Element - Sub-Element): Financials - Profit - Net Profit Margin
+   [ 3] Description                             : Bottom-line profitability after all expenses
+   [ 4] Business Drivers                        : Total Financial Management
+   [ 5] Business Drivers Description            : Comprehensive efficiency including financing and tax management
+   [ 6] Performance Factors                     : Net Margin %
+   [ 7] Performance Factors Description         : Net income as % of revenue - ultimate profitability measure
+   [ 8] Risk Factors                            : Profitability Failure
+   [ 9] Risk Factors Description                : Operating losses or negative net income
+   [10] Metric / Data Point / Ratio /Question   : Net Profit Margin %
+   [11] Description                             : Net Income / Revenue after all expenses, interest, and taxes
+   [12] Unit of Measure                         : Percentage
+   [13] Target                                  : >5% for mature businesses; breakeven to positive for growth stage
+   [14] Data Collection Instructions            : Net Income / Total Revenue × 100. Compare to prior periods and peers.
+
+ROW 17:
+------------------------------------------------------------------------------------------------------------------------
+   [ 1] Level                                   : 3
+   [ 2] Hierarchy (Dimension - Element - Sub-Element): Financials - Profit - Earnings Volatility
+   [ 3] Description                             : Stability and predictability of profit generation
+   [ 4] Business Drivers                        : Business Model Stability
+   [ 5] Business Drivers Description            : Recurring revenue and efficient operations create stable earnings
+   [ 6] Performance Factors                     : Earnings Consistency
+   [ 7] Performance Factors Description         : Low variance in quarterly/annual earnings
+   [ 8] Risk Factors                            : Earnings Unpredictability
+   [ 9] Risk Factors Description                : High earnings volatility creates uncertainty for investors and planning
+   [10] Metric / Data Point / Ratio /Question   : Earnings Standard Deviation (3-year)
+   [11] Description                             : Standard deviation of quarterly EBIT over 12 quarters
+   [12] Unit of Measure                         : Currency (absolute) or Percentage (CoV)
+   [13] Target                                  : Coefficient of Variation <20%
+   [14] Data Collection Instructions            : Calculate StdDev of last 12 quarters EBIT. Lower = more stable.
+
+ROW 18:
+------------------------------------------------------------------------------------------------------------------------
+   [ 1] Level                                   : 2
+   [ 2] Hierarchy (Dimension - Element - Sub-Element): Financials - Capital
+   [ 3] Description                             : Capital structure, efficiency, and investment capacity
+   [ 4] Business Drivers                        : Growth Funding & Capital Allocation
+   [ 5] Business Drivers Description            : Ability to fund operations, growth, and strategic initiatives
+   [ 6] Performance Factors                     : Capital Efficiency
+   [ 7] Performance Factors Description         : Return on invested capital and optimal capital structure
+   [ 8] Risk Factors                            : Capital Constraint & Leverage
+   [ 9] Risk Factors Description                : Insufficient capital for growth or excessive debt burden
+   [14] Data Collection Instructions            : Aggregate of capital sub-elements - auto-calculated from Level 3
+
+ROW 19:
+------------------------------------------------------------------------------------------------------------------------
+   [ 1] Level                                   : 3
+   [ 2] Hierarchy (Dimension - Element - Sub-Element): Financials - Capital - Working Capital
+   [ 3] Description                             : Short-term capital required for daily operations
+   [ 4] Business Drivers                        : Operating Cycle Requirements
+   [ 5] Business Drivers Description            : Cash conversion cycle determines working capital needs
+   [ 6] Performance Factors                     : Working Capital Efficiency
+   [ 7] Performance Factors Description         : Optimal level to support operations without excess tied up
+   [ 8] Risk Factors                            : Working Capital Shortfall
+   [ 9] Risk Factors Description                : Insufficient working capital to meet operational obligations
+   [10] Metric / Data Point / Ratio /Question   : Working Capital Ratio
+   [11] Description                             : Current Assets / Current Liabilities
+   [12] Unit of Measure                         : Ratio
+   [13] Target                                  : 1.5 to 2.0 (varies by industry)
+   [14] Data Collection Instructions            : Calculate monthly. Ratio <1.0 = liquidity risk. Ratio >3.0 = inefficiency.
+
+ROW 20:
+------------------------------------------------------------------------------------------------------------------------
+   [ 1] Level                                   : 3
+   [ 2] Hierarchy (Dimension - Element - Sub-Element): Financials - Capital - Capital Expenditure (Capex)
+   [ 3] Description                             : Investment in long-term assets and infrastructure
+   [ 4] Business Drivers                        : Growth & Maintenance Requirements
+   [ 5] Business Drivers Description            : Need to invest in capacity, technology, and asset replacement
+   [ 6] Performance Factors                     : Capex Efficiency
+   [ 7] Performance Factors Description         : Return on capital invested - growth + margin improvement
+   [ 8] Risk Factors                            : Capex Overrun
+   [ 9] Risk Factors Description                : Capital projects exceed budget or fail to deliver expected returns
+   [10] Metric / Data Point / Ratio /Question   : Annual Capex as % of Revenue
+   [11] Description                             : Total capital expenditures / annual revenue
+   [12] Unit of Measure                         : Percentage
+   [13] Target                                  : Maintenance capex: 2-5% of revenue; Growth capex: project-specific ROI >15%
+   [14] Data Collection Instructions            : Track maintenance vs growth capex separately. Monitor project ROI.
+
+ROW 21:
+------------------------------------------------------------------------------------------------------------------------
+   [ 1] Level                                   : 3
+   [ 2] Hierarchy (Dimension - Element - Sub-Element): Financials - Capital - Debt Levels
+   [ 3] Description                             : Total debt obligations and leverage
+   [ 4] Business Drivers                        : Financing Strategy
+   [ 5] Business Drivers Description            : Use of debt to fund growth vs equity financing
+   [ 6] Performance Factors                     : Leverage Optimization
+   [ 7] Performance Factors Description         : Debt level that minimizes cost of capital without excessive risk
+   [ 8] Risk Factors                            : Over-Leverage
+   [ 9] Risk Factors Description                : Excessive debt creating solvency risk and financial distress
+   [10] Metric / Data Point / Ratio /Question   : Debt-to-EBITDA Ratio
+   [11] Description                             : Total Debt / EBITDA (last 12 months)
+   [12] Unit of Measure                         : Ratio (x)
+   [13] Target                                  : <3x for investment grade; <5x acceptable for PE-backed; varies by industry
+   [14] Data Collection Instructions            : Include all interest-bearing debt. Calculate quarterly. Monitor covenants.
+
+ROW 22:
+------------------------------------------------------------------------------------------------------------------------
+   [ 1] Level                                   : 3
+   [ 2] Hierarchy (Dimension - Element - Sub-Element): Financials - Capital - Return on Invested Capital (ROIC)
+   [ 3] Description                             : Profitability relative to total capital employed
+   [ 4] Business Drivers                        : Capital Allocation Excellence
+   [ 5] Business Drivers Description            : Deploying capital to highest-return opportunities
+   [ 6] Performance Factors                     : Value Creation
+   [ 7] Performance Factors Description         : ROIC > WACC = value creation; ROIC < WACC = value destruction
+   [ 8] Risk Factors                            : Capital Misallocation
+   [ 9] Risk Factors Description                : Investing in low-return projects destroys shareholder value
+   [10] Metric / Data Point / Ratio /Question   : ROIC %
+   [11] Description                             : NOPAT / (Debt + Equity)
+   [12] Unit of Measure                         : Percentage
+   [13] Target                                  : >WACC + 5% premium
+   [14] Data Collection Instructions            : NOPAT = Net Operating Profit After Tax. Calculate annually. Compare to WACC.
+
+ROW 23:
+------------------------------------------------------------------------------------------------------------------------
+   [ 1] Level                                   : 2
+   [ 2] Hierarchy (Dimension - Element - Sub-Element): Financials - Liquidity
+   [ 3] Description                             : Cash flow generation and financial flexibility
+   [ 4] Business Drivers                        : Cash Conversion & Treasury Management
+   [ 5] Business Drivers Description            : Ability to generate cash and maintain liquidity buffers
+   [ 6] Performance Factors                     : Cash Flow Strength
+   [ 7] Performance Factors Description         : Strong operating cash flow and adequate liquidity reserves
+   [ 8] Risk Factors                            : Liquidity Crisis
+   [ 9] Risk Factors Description                : Inability to meet short-term obligations or fund operations
+   [14] Data Collection Instructions            : Aggregate of liquidity sub-elements - auto-calculated from Level 3
+
+ROW 24:
+------------------------------------------------------------------------------------------------------------------------
+   [ 1] Level                                   : 3
+   [ 2] Hierarchy (Dimension - Element - Sub-Element): Financials - Liquidity - Operating Cash Flow
+   [ 3] Description                             : Cash generated from core business operations
+   [ 4] Business Drivers                        : Profitability + Working Capital Management
+   [ 5] Business Drivers Description            : Converting earnings to cash through efficient operations
+   [ 6] Performance Factors                     : Cash Generation
+   [ 7] Performance Factors Description         : Strong positive OCF funds growth without external financing
+   [ 8] Risk Factors                            : Cash Burn
+   [ 9] Risk Factors Description                : Negative operating cash flow depleting reserves
+   [10] Metric / Data Point / Ratio /Question   : Operating Cash Flow (OCF)
+   [11] Description                             : Cash from operations before investing and financing activities
+   [12] Unit of Measure                         : Currency
+   [13] Target                                  : >0 for mature businesses; may be negative for high-growth startups
+   [14] Data Collection Instructions            : From cash flow statement. Calculate OCF margin: OCF / Revenue. Track trend.
+
+ROW 25:
+------------------------------------------------------------------------------------------------------------------------
+   [ 1] Level                                   : 3
+   [ 2] Hierarchy (Dimension - Element - Sub-Element): Financials - Liquidity - Cash Reserves
+   [ 3] Description                             : Available cash and cash equivalents
+   [ 4] Business Drivers                        : Liquidity Buffer Strategy
+   [ 5] Business Drivers Description            : Maintaining reserves for opportunities and contingencies
+   [ 6] Performance Factors                     : Liquidity Adequacy
+   [ 7] Performance Factors Description         : Sufficient cash to weather disruptions and fund growth
+   [ 8] Risk Factors                            : Cash Depletion
+   [ 9] Risk Factors Description                : Running out of cash before achieving profitability or next funding
+   [10] Metric / Data Point / Ratio /Question   : Cash Runway (Months)
+   [11] Description                             : Current cash balance / average monthly cash burn
+   [12] Unit of Measure                         : Months
+   [13] Target                                  : >12 months for early-stage; >6 months for mature businesses
+   [14] Data Collection Instructions            : Monthly burn = Operating cash outflow / 12. Minimum acceptable: 6 months.
+
+ROW 26:
+------------------------------------------------------------------------------------------------------------------------
+   [ 1] Level                                   : 3
+   [ 2] Hierarchy (Dimension - Element - Sub-Element): Financials - Liquidity - Free Cash Flow
+   [ 3] Description                             : Cash available after capital expenditures
+   [ 4] Business Drivers                        : Investment Discipline
+   [ 5] Business Drivers Description            : Generating cash in excess of maintenance capex requirements
+   [ 6] Performance Factors                     : Cash Flow Conversion
+   [ 7] Performance Factors Description         : Percentage of EBITDA converted to free cash flow
+   [ 8] Risk Factors                            : Negative Free Cash Flow
+   [ 9] Risk Factors Description                : Capex exceeding operating cash flow, requiring external funding
+   [10] Metric / Data Point / Ratio /Question   : Free Cash Flow (FCF)
+   [11] Description                             : Operating Cash Flow - Capital Expenditures
+   [12] Unit of Measure                         : Currency
+   [13] Target                                  : Positive and growing; FCF / Revenue >5%
+   [14] Data Collection Instructions            : FCF = OCF - Capex. Exclude one-time items. Calculate FCF yield.
+
+ROW 27:
+------------------------------------------------------------------------------------------------------------------------
+   [ 1] Level                                   : 3
+   [ 2] Hierarchy (Dimension - Element - Sub-Element): Financials - Liquidity - Cash Conversion Cycle
+   [ 3] Description                             : Time to convert operations into cash
+   [ 4] Business Drivers                        : Working Capital Efficiency
+   [ 5] Business Drivers Description            : Speed of collecting receivables and managing inventory/payables
+   [ 6] Performance Factors                     : Cash Cycle Optimization
+   [ 7] Performance Factors Description         : Shorter cycle = faster cash generation and lower working capital needs
+   [ 8] Risk Factors                            : Cash Cycle Extension
+   [ 9] Risk Factors Description                : Slow collections or excess inventory tying up cash
+   [10] Metric / Data Point / Ratio /Question   : Cash Conversion Cycle (Days)
+   [11] Description                             : Days Inventory Outstanding + Days Sales Outstanding - Days Payable Outstanding
+   [12] Unit of Measure                         : Days
+   [13] Target                                  : Industry-specific; minimize without harming relationships. <60 days ideal.
+   [14] Data Collection Instructions            : DIO + DSO - DPO. Calculate quarterly. Lower is better (within reason).
+
+ROW 28:
+------------------------------------------------------------------------------------------------------------------------
+   [ 1] Level                                   : 2
+   [ 2] Hierarchy (Dimension - Element - Sub-Element): Financials - Accuracy & Transparency
+   [ 3] Description                             : Quality, reliability, and transparency of financial reporting
+   [ 4] Business Drivers                        : Financial Governance & Controls
+   [ 5] Business Drivers Description            : Robust financial systems, controls, and reporting discipline
+   [ 6] Performance Factors                     : Financial Reporting Excellence
+   [ 7] Performance Factors Description         : Accurate, timely, and transparent financial information
+   [ 8] Risk Factors                            : Financial Reporting Risk
+   [ 9] Risk Factors Description                : Inaccurate reporting, fraud, or loss of stakeholder confidence
+   [14] Data Collection Instructions            : Aggregate of accuracy & transparency sub-elements
+
+ROW 29:
+------------------------------------------------------------------------------------------------------------------------
+   [ 1] Level                                   : 3
+   [ 2] Hierarchy (Dimension - Element - Sub-Element): Financials - Accuracy & Transparency - Financial Close Cycle
+   [ 3] Description                             : Time required to close books and produce financial statements
+   [ 4] Business Drivers                        : Process Automation & Control Quality
+   [ 5] Business Drivers Description            : Efficient systems and controls enable fast, accurate closes
+   [ 6] Performance Factors                     : Close Efficiency
+   [ 7] Performance Factors Description         : Fast close indicates strong processes and systems
+   [ 8] Risk Factors                            : Delayed Financial Information
+   [ 9] Risk Factors Description                : Slow closes mean management operates with stale data
+   [10] Metric / Data Point / Ratio /Question   : Month-End Close Cycle Time
+   [11] Description                             : Business days from month-end to final financial statements
+   [12] Unit of Measure                         : Days
+   [13] Target                                  : Best-in-class: 3-5 days; Acceptable: 7-10 days; Poor: >15 days
+   [14] Data Collection Instructions            : Measure each month. Target continuous improvement. Automate reconciliations.
+
+ROW 30:
+------------------------------------------------------------------------------------------------------------------------
+   [ 1] Level                                   : 3
+   [ 2] Hierarchy (Dimension - Element - Sub-Element): Financials - Accuracy & Transparency - Financial Audit Results
+   [ 3] Description                             : External audit opinion and findings
+   [ 4] Business Drivers                        : Control Environment Strength
+   [ 5] Business Drivers Description            : Strong controls result in clean audits with no material weaknesses
+   [ 6] Performance Factors                     : Audit Opinion Quality
+   [ 7] Performance Factors Description         : Unqualified opinion with minimal adjustments
+   [ 8] Risk Factors                            : Audit Findings Risk
+   [ 9] Risk Factors Description                : Material weaknesses or qualified opinion damages credibility
+   [10] Metric / Data Point / Ratio /Question   : Audit Opinion & Material Weaknesses
+   [11] Description                             : Clean/unqualified opinion with zero material weaknesses
+   [12] Unit of Measure                         : Categorical: Clean / Qualified / Adverse + Count of material weaknesses
+   [13] Target                                  : Clean opinion, zero material weaknesses
+   [14] Data Collection Instructions            : Report latest audit results. Track remediation of any findings.
+
+ROW 31:
+------------------------------------------------------------------------------------------------------------------------
+   [ 1] Level                                   : 3
+   [ 2] Hierarchy (Dimension - Element - Sub-Element): Financials - Accuracy & Transparency - Forecast Accuracy
+   [ 3] Description                             : Reliability of financial forecasts and budgets
+   [ 4] Business Drivers                        : Planning & Budgeting Maturity
+   [ 5] Business Drivers Description            : Quality of assumptions, data, and planning processes
+   [ 6] Performance Factors                     : Predictive Capability
+   [ 7] Performance Factors Description         : Actual results closely match forecasts/budgets
+   [ 8] Risk Factors                            : Forecast Unreliability
+   [ 9] Risk Factors Description                : Large variances undermine planning and stakeholder confidence
+   [10] Metric / Data Point / Ratio /Question   : Revenue & EBITDA Forecast Variance
+   [11] Description                             : Percentage difference between forecast and actual
+   [12] Unit of Measure                         : Percentage
+   [13] Target                                  : ±5% variance for mature businesses; ±10% for high-growth
+   [14] Data Collection Instructions            : (Actual - Forecast) / Forecast × 100. Track for revenue, costs, EBITDA.
+
+ROW 32:
+------------------------------------------------------------------------------------------------------------------------
+   [ 1] Level                                   : 3
+   [ 2] Hierarchy (Dimension - Element - Sub-Element): Financials - Accuracy & Transparency - Financial Disclosure Quality
+   [ 3] Description                             : Transparency and completeness of financial reporting
+   [ 4] Business Drivers                        : Stakeholder Communication Strategy
+   [ 5] Business Drivers Description            : Commitment to transparent, comprehensive financial disclosure
+   [ 6] Performance Factors                     : Transparency Excellence
+   [ 7] Performance Factors Description         : Clear, comprehensive disclosures build trust and reduce information asymmetry
+   [ 8] Risk Factors                            : Opacity Risk
+   [ 9] Risk Factors Description                : Poor disclosure creates suspicion and increases cost of capital
+   [10] Metric / Data Point / Ratio /Question   : Financial Disclosure Score
+   [11] Description                             : Assessment of disclosure quality against best practice framework
+   [12] Unit of Measure                         : Score 1-10 or Percentage vs benchmark
+Traceback (most recent call last):
+  File "C:\Users\AndrewSmart\Claude_Projects\AAgents\DecideWright-EA\analyze_financials_detailed.py", line 79, in <module>
+    print(f"   [{col_idx:2d}] {header:<40}: {value_str}")
+  File "C:\Users\AndrewSmart\AppData\Local\Programs\Python\Python312\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2265' in position 56: character maps to <undefined>

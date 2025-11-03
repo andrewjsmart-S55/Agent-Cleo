@@ -1,0 +1,277 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div x-data="dashboard()" x-init="init()">
+    <!-- Header -->
+    <div class="px-4 py-5 sm:px-6 bg-white rounded-lg shadow mb-6">
+        <div class="flex justify-between items-center">
+            <div>
+                <h2 class="text-2xl font-bold text-gray-900">Agent Dashboard</h2>
+                <p class="mt-1 text-sm text-gray-500">Manage your AI assistants and their tasks</p>
+            </div>
+            <div class="flex space-x-3">
+                <button @click="scanOutputs()" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                    Scan Outputs
+                </button>
+                <button @click="initializeSystem()" :disabled="initializing" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center disabled:opacity-50">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                    </svg>
+                    <span x-text="initializing ? 'Initializing...' : 'Initialize System'"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-3 mb-6">
+        <div class="bg-white overflow-hidden shadow rounded-lg">
+            <div class="p-5">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 bg-blue-500 rounded-md p-3">
+                        <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                    <div class="ml-5 w-0 flex-1">
+                        <dl>
+                            <dt class="text-sm font-medium text-gray-500 truncate">Total Agents</dt>
+                            <dd class="text-3xl font-semibold text-gray-900" x-text="agents.length"></dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white overflow-hidden shadow rounded-lg">
+            <div class="p-5">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 bg-green-500 rounded-md p-3">
+                        <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                        </svg>
+                    </div>
+                    <div class="ml-5 w-0 flex-1">
+                        <dl>
+                            <dt class="text-sm font-medium text-gray-500 truncate">Active Jobs</dt>
+                            <dd class="text-3xl font-semibold text-gray-900" x-text="stats.activeJobs"></dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white overflow-hidden shadow rounded-lg">
+            <div class="p-5">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 bg-purple-500 rounded-md p-3">
+                        <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <div class="ml-5 w-0 flex-1">
+                        <dl>
+                            <dt class="text-sm font-medium text-gray-500 truncate">Recent Activities</dt>
+                            <dd class="text-3xl font-semibold text-gray-900" x-text="recentActivities.length"></dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Agents Grid -->
+    <div class="bg-white shadow rounded-lg p-6 mb-6">
+        <h3 class="text-lg font-semibold text-gray-900 mb-4">AI Agents</h3>
+
+        <div x-show="agents.length === 0" class="text-center py-12">
+            <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+            <h3 class="mt-2 text-sm font-medium text-gray-900">No agents found</h3>
+            <p class="mt-1 text-sm text-gray-500">Click "Initialize System" to discover agents</p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <template x-for="agent in agents" :key="agent.id">
+                <div class="agent-card border rounded-lg p-4 cursor-pointer" :class="agent.is_master ? 'border-yellow-400 bg-yellow-50' : 'border-gray-200 bg-white'" @click="viewAgent(agent)">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <div class="flex items-center">
+                                <h4 class="text-lg font-semibold text-gray-900" x-text="agent.name"></h4>
+                                <span x-show="agent.is_master" class="ml-2 px-2 py-1 text-xs font-semibold rounded bg-yellow-200 text-yellow-800">Master</span>
+                            </div>
+                            <p class="text-sm text-gray-500 mt-1" x-text="agent.folder_name"></p>
+                        </div>
+                        <svg class="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                    <div class="mt-3 text-sm text-gray-600">
+                        <p x-text="agent.context_summary || 'No context files'"></p>
+                    </div>
+                    <div class="mt-4 flex space-x-2">
+                        <button @click.stop="viewJobs(agent)" class="flex-1 bg-blue-500 hover:bg-blue-600 text-white text-sm px-3 py-2 rounded">
+                            View Jobs
+                        </button>
+                        <button @click.stop="viewActivities(agent)" class="flex-1 bg-green-500 hover:bg-green-600 text-white text-sm px-3 py-2 rounded">
+                            Activities
+                        </button>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </div>
+
+    <!-- Recent Activities -->
+    <div class="bg-white shadow rounded-lg p-6">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="text-lg font-semibold text-gray-900">Recent Activities</h3>
+            <a href="/activities" class="text-blue-500 hover:text-blue-600 text-sm font-medium">View All</a>
+        </div>
+
+        <div x-show="recentActivities.length === 0" class="text-center py-8 text-gray-500">
+            No recent activities
+        </div>
+
+        <div class="space-y-3">
+            <template x-for="activity in recentActivities.slice(0, 5)" :key="activity.id">
+                <div class="border-l-4 border-blue-500 bg-gray-50 p-4 rounded-r">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h4 class="font-medium text-gray-900" x-text="activity.title"></h4>
+                            <p class="text-sm text-gray-600 mt-1" x-text="activity.summary"></p>
+                            <div class="flex items-center mt-2 text-xs text-gray-500">
+                                <span x-text="activity.agent_name" class="font-medium"></span>
+                                <span class="mx-2">•</span>
+                                <span x-text="formatDate(activity.created_at)"></span>
+                            </div>
+                        </div>
+                        <span class="px-2 py-1 text-xs font-semibold rounded" :class="activity.status === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'" x-text="activity.status"></span>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function dashboard() {
+    return {
+        agents: [],
+        recentActivities: [],
+        stats: {
+            activeJobs: 0
+        },
+        initializing: false,
+
+        async init() {
+            await this.loadAgents();
+            await this.loadActivities();
+            await this.loadStats();
+        },
+
+        async initializeSystem() {
+            this.initializing = true;
+            try {
+                const response = await fetch('/api/initialize', {
+                    method: 'POST'
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    showToast(data.message, 'success');
+                    await this.loadAgents();
+                } else {
+                    showToast(data.error || 'Initialization failed', 'error');
+                }
+            } catch (error) {
+                showToast('Error initializing system', 'error');
+            } finally {
+                this.initializing = false;
+            }
+        },
+
+        async loadAgents() {
+            try {
+                const response = await fetch('/api/agents');
+                this.agents = await response.json();
+            } catch (error) {
+                console.error('Error loading agents:', error);
+            }
+        },
+
+        async loadActivities() {
+            try {
+                const response = await fetch('/api/activities?limit=10');
+                this.recentActivities = await response.json();
+            } catch (error) {
+                console.error('Error loading activities:', error);
+            }
+        },
+
+        async loadStats() {
+            try {
+                const response = await fetch('/api/jobs');
+                const jobs = await response.json();
+                this.stats.activeJobs = jobs.filter(j => j.status === 'active').length;
+            } catch (error) {
+                console.error('Error loading stats:', error);
+            }
+        },
+
+        async scanOutputs() {
+            try {
+                const response = await fetch('/api/monitor/scan', {
+                    method: 'POST'
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    showToast(`Found ${data.new_activities} new files`, 'success');
+                    await this.loadActivities();
+                } else {
+                    showToast(data.error || 'Scan failed', 'error');
+                }
+            } catch (error) {
+                showToast('Error scanning outputs', 'error');
+            }
+        },
+
+        viewAgent(agent) {
+            // Could expand to show agent details
+            console.log('View agent:', agent);
+        },
+
+        viewJobs(agent) {
+            window.location.href = `/jobs?agent_id=${agent.id}`;
+        },
+
+        viewActivities(agent) {
+            window.location.href = `/activities?agent_id=${agent.id}`;
+        },
+
+        formatDate(dateString) {
+            if (!dateString) return '';
+            const date = new Date(dateString);
+            const now = new Date();
+            const diffMs = now - date;
+            const diffMins = Math.floor(diffMs / 60000);
+            const diffHours = Math.floor(diffMs / 3600000);
+            const diffDays = Math.floor(diffMs / 86400000);
+
+            if (diffMins < 1) return 'Just now';
+            if (diffMins < 60) return `${diffMins}m ago`;
+            if (diffHours < 24) return `${diffHours}h ago`;
+            if (diffDays < 7) return `${diffDays}d ago`;
+            return date.toLocaleDateString();
+        }
+    }
+}
+</script>
+{% endblock %}

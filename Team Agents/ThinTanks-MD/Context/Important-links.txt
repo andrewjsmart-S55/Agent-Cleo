@@ -1,0 +1,23 @@
+https://app.flutterflow.io/
+
+Risk Accountable	Person or Group
+Impact Score	Number	
+Likelihood Score	Number
+Risk Score	Calculated (calculation based on other columns)	
+Risk Rating	Calculated (calculation based on other columns)	
+Target Risk Score	Number	
+Target Risk Date	Date and Time	
+Target Risk Rating	Calculated (calculation based on other columns)
+
+
+MitigationUID	Calculated (calculation based on other columns)
+Mitigation Effectiveness Rating	Number	
+Mitigation Assessment Date	Date and Time	
+Mitigation Effectiveness Level	Calculated (calculation based on other columns)
+
+
+
+
+
+
+="RK-"&YEAR([Created])&"-"&RIGHT("0000"&ID,4)

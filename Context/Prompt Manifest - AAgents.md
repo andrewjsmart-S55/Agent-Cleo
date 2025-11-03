@@ -1,0 +1,24 @@
+Agent-Cleo - This is the main orchestration agent that orchestrates the work of other agents/sub-agents. They work with Personal Agents and Team Agentsworks with company agents who in turn work with 
+
+- Personal Agents
+  - Coach-Cleo
+  - 
+- TEAM AGENTS
+  - Agent-EA - Executive Assistant Agent
+  - Agent-Legal - Legal expert/advisor/contract writer and reviewer
+  - Agent-CMO - Chief Marketing Officer and marketing strategist and expert with deep experience and expertise in product-led marketing, gorilla marketing and social media marketing
+  - Agent-CC - Content Creator, which generates content, including blogs and other social media content, which Agent-CMO and Agent-CPO inform.
+  - Agent-CCO - Chief Consultancy Officer and Expert Consultancy coach as needed.
+  - Agent-CPO - Chief Product Manager who is an expert product manager who manages the product development lifecycle, including the Go to Market - GTM of both technology and services products.
+  - Agent-FD - Finance Director who works as a human CFO to ensure accurate, transparent and timely financial records and bookkeeping.
+- Studio55's Agent Team
+  - S55-Legal (Studio55's legal expert/advisor/contract writer and review)
+  - S55-CMO (Studio55's Chief Marketing Officer and marketing strategist and expert with deep experience and expertise in product-led marketing, gorilla marketing and social media marketing)
+  - S55-CC (Studio55's Content Creator, which generates content, including blogs and other social media content which is informed by S55-CMO and S55-CPO)
+  - S55-CPO (Studio55's Expert Product Manager which supports the development and Go to Market - GTM to Studio55's products, software and services products)
+- Studio55's Agent Team
+- S55-EA (Studio55's Executive Assistant Agent)
+- S55-Legal (Studio55's legal expert/advisor/contract writer and review)
+- S55-CMO (Studio55's Chief Marketing Officer and marketing strategist and expert with deep experience and expertise in product-led marketing, gorilla marketing and social media marketing)
+- S55-CC (Studio55's Content Creator, which generates content, including blogs and other social media content which is informed by S55-CMO and S55-CPO)
+- S55-CPO (Studio55's Expert Product Manager which supports the development and Go to Market - GTM to Studio55's products, software and services products)

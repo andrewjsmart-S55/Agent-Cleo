@@ -1,0 +1,353 @@
+# Glossary of Risk-Based Performance Management Terms
+
+
+## Business Continuity Management
+A holistic management process that identifies potential threats to an organization and the impacts those threats might have on business operations. It provides a framework for building organizational resilience and effective response capabilities that safeguard the interests of key stakeholders, reputation, brand, and value-creating activities. Within RBPM, business continuity management connects to operational risk management, ensuring that risk events don't catastrophically impact strategic objectives. It includes developing response plans for various risk scenarios to minimize disruption.
+
+## Business Drivers
+The fundamental factors that disproportionately influence the success or failure of a business or industry. These critical variables significantly impact an organization's performance and value creation. In RBPM, business drivers serve as the foundation for establishing risk appetite and strategic objectives. Examples might include access to capital, technological innovation capabilities, regulatory environment, or customer demographics. By identifying and understanding key business drivers, organizations can develop strategies that leverage these factors while remaining cognizant of associated risks.
+
+## Business Model
+A description of how an organization creates, delivers, and captures value. It encompasses the organization's value proposition, target customers, distribution channels, revenue streams, key resources, activities, partnerships, and cost structure. Within RBPM, the business model is a fundamental consideration when determining appropriate risk appetite levels, as different business models have inherent risk profiles. Business model innovation is becoming an increasingly important source of competitive advantage, but such innovation must be pursued within appetite boundaries.
+
+## Business Model Canvas
+A strategic management visual chart developed by Alexander Osterwalder that allows organizations to describe, design, challenge, and pivot their business model. The canvas has nine building blocks: customer segments, value propositions, channels, customer relationships, revenue streams, key resources, key activities, key partnerships, and cost structure. In RBPM, the Business Model Canvas is used to understand the business model and its implications for objectives and risks. It helps organizations identify where risks might emerge and ensures that risk appetite aligns with the chosen business model.
+
+## Capability Maturity Model
+A methodology for evaluating and measuring the maturity of an organization's processes, originally developed by the Carnegie Mellon University Software Engineering Institute. It typically defines maturity levels ranging from initial (processes are unpredictable and poorly controlled) to optimized (focus on continuous improvement). In RBPM, maturity models help assess the sophistication of risk management practices and strategy execution capabilities, identifying gaps and improvement opportunities. They provide a roadmap for developing more advanced risk management and performance management capabilities.
+
+## Change Management
+The structured approach to transitioning individuals, teams, and organizations from a current state to a desired future state. In RBPM implementation, change management focuses on preparing, supporting, and helping people successfully adopt new ways of working. This includes managing cultural transformations necessary to embed risk awareness into decision-making processes. Effective change management addresses resistance, builds commitment, and ensures sustainability of the new practices. It encompasses communications planning, stakeholder analysis, coaching, training, and reinforcement activities to facilitate the adoption of integrated strategy and risk management approaches.
+
+## Compliance Risk
+The risk of legal or regulatory sanctions, material financial loss, or reputational damage that an organization may suffer as a result of failing to comply with laws, regulations, internal policies, or prescribed practices. Within RBPM, compliance risk is typically identified as a specific risk category requiring dedicated controls and monitoring. Effective management of compliance risk involves identifying applicable requirements, assessing potential impacts of non-compliance, implementing appropriate controls, monitoring compliance status, and reporting to governance bodies.
+
+## Continuous Turbulent Times
+A term describing the early 21st century business environment characterized by unprecedented speed of change, technological disruption, economic volatility, geopolitical shifts, regulatory evolution, and intensified competition. In this environment, organizations face greater uncertainty and complexity than ever before. The RBPM approach was designed specifically to help organizations thrive in continuous turbulent times by integrating strategy and risk management, enabling more agile responses to emerging opportunities and threats while maintaining appropriate risk appetite boundaries.
+
+## Control Environment
+The set of standards, processes, and structures that provide the foundation for carrying out internal control throughout an organization. It encompasses the organization's integrity, ethical values, management philosophy, board oversight, accountability structures, and commitment to competence. In RBPM, the control environment is a critical component of risk management, establishing the tone for risk awareness and the importance of operating within appetite. A strong control environment helps prevent excessive risk-taking while enabling appropriate risk-taking in pursuit of strategic objectives.
+
+## Control Map
+A visualization tool that assesses control performance and control design dimensions on a matrix. Control performance is evaluated based on how consistently the control is applied, while control design is assessed on how effectively the control mitigates the associated risk. The Control Map provides insight into control effectiveness and helps prioritize improvement actions. It can be further enhanced by incorporating exposure or appetite alignment dimensions, enabling organizations to focus control improvement efforts on areas where exposure is high or outside appetite boundaries.
+
+## Control Scorecard
+A management tool that tracks and reports on the effectiveness of key controls within an organization. It includes information on control owners, key control indicators (KCIs), assessment results, and status indicators. The Control Scorecard helps senior management answer questions about whether the control environment is effective, whether compliance obligations are being met, whether control effectiveness trends are moving in the right direction, and what exceptions require investigation. It complements the Performance and Risk Scorecards to provide a comprehensive view of risk-based performance management.
+
+## Core Change Alliance
+An informal coalition of individuals from various levels within an organization who share a common commitment to implementing risk-based performance management. This alliance includes both formal participants in the implementation and informal supporters who can influence and advocate for the approach. Building a core change alliance is a critical early step in the RBPM implementation process, helping to overcome resistance and sustain momentum through the transformation journey. The alliance provides guidance, shares expertise, and helps navigate organizational politics.
+
+## Corporate Governance
+The system of rules, practices, processes, and relationships by which a company is directed and controlled. It involves balancing the interests of stakeholders such as shareholders, management, customers, suppliers, financiers, government, and the community. In RBPM, corporate governance establishes the framework for decision-making, risk oversight, and accountability. It ensures that strategic objectives are pursued within appropriate risk appetite boundaries and that risks are effectively identified, assessed, managed, and monitored.
+
+## COSO ERM Framework
+The Enterprise Risk Management – Integrated Framework published by the Committee of Sponsoring Organizations of the Treadway Commission (COSO) in 2004 and updated in 2017. This framework defines enterprise risk management as a process applied in strategy setting and across the enterprise, designed to identify potential events and manage risk within risk appetite. The COSO ERM Framework is a significant influence on RBPM, particularly in its emphasis on risk appetite and the integration of risk management with strategy setting.
+
+## Credit Crunch
+The severe global financial crisis that began in 2007-2008, triggered by failures in the subprime mortgage market and resulting in a liquidity crisis in the banking system. The Credit Crunch revealed significant weaknesses in risk management practices, particularly in financial institutions that failed to understand their risk exposures and operate within appropriate risk appetite boundaries. It highlighted the consequences of divorcing risk management from strategy, demonstrating the need for integrated approaches like RBPM to ensure sustainable strategic execution.
+
+## Culture
+The shared values, beliefs, assumptions, and behaviors that characterize an organization. In RBPM, culture is a critical "soft" discipline that can either enable or undermine the effectiveness of strategy and risk management. A strategy-focused, risk-aware culture is one where employees at all levels understand strategic objectives, appreciate risk-taking boundaries, feel empowered to identify and report risks, and make decisions aligned with the organization's risk appetite. Cultural factors often determine whether RBPM implementation succeeds or fails.
+
+## Customer Intimacy
+A strategic approach focused on delivering precisely what specific customers want through detailed customer knowledge and operational flexibility. Organizations pursuing customer intimacy continually tailor and shape products and services to fit increasingly precise definitions of customer segments. This strategy requires deep customer insights, relationship-building capabilities, and often entails higher costs that are justified by building long-term customer loyalty. In RBPM, organizations pursuing customer intimacy must define appropriate risk appetite levels for customer-related investments and service delivery.
+
+## Decision Rights
+The formal allocation of authority to make specific decisions within an organization. Clear decision rights establish who has input to decisions, who makes decisions, and who is accountable for outcomes. In RBPM, decision rights are formalized through the RACI model, clarifying who is Responsible, Accountable, Consulted, and Informed for each strategic objective, key risk, and control. Well-defined decision rights ensure that risk-taking decisions are made at appropriate organizational levels within established appetite boundaries.
+
+## Detective Controls
+Controls designed to identify errors, irregularities, or adverse events that have already occurred. Detective controls help organizations identify when risks have materialized so that corrective action can be taken. Examples include exception reports, reconciliations, physical inventories, and compliance reviews. Within RBPM, detective controls are an important complement to preventive controls, providing a second line of defense in the risk management framework. Effective detective controls enable timely detection of risk events and limit their potential impact on strategic objectives.
+
+## Enterprise Risk Management (ERM)
+A comprehensive approach to identifying, assessing, managing, monitoring, and reporting on risks across an entire organization. ERM considers strategic, operational, financial, compliance, and reputational risks within a holistic framework rather than addressing risks in silos. In contrast to earlier risk management approaches that focused narrowly on insurable or financial risks, ERM emerged in the early 2000s to provide a more integrated perspective. RBPM builds on ERM concepts, particularly in its emphasis on linking risk management to strategy execution.
+
+## Execution Premium
+A six-step management system developed by Robert Kaplan and David Norton that connects strategy formulation and planning with operational execution. The system includes: 1) Develop the strategy, 2) Plan the strategy, 3) Align the organization, 4) Plan operations, 5) Monitor and learn, and 6) Test and adapt the strategy. This system represents the most evolved version of the Balanced Scorecard methodology and serves as an important foundation for the RBPM approach, particularly in its emphasis on linking strategic objectives to operational activities.
+
+## Execution Risk
+Uncertainty related to an organization's ability to execute its chosen strategy. This includes risks associated with inadequate resources, insufficient capabilities, poor project management, change resistance, or implementation failures. In RBPM, execution risk is distinguished from strategic risk (which relates to the soundness of strategic choices themselves). Effective management of execution risk requires clear governance structures, robust program management capabilities, regular performance monitoring, and appropriate contingency planning to address implementation challenges.
+
+## External Risk
+Risks originating from factors outside an organization's control, such as economic conditions, competitor actions, regulatory changes, technological disruptions, or natural disasters. These risks cannot be eliminated but can be anticipated, monitored, and mitigated. Within RBPM, external risk management focuses on developing resilience, agility, and contingency plans rather than risk elimination. Scenario planning and early warning systems are particularly important for managing external risks within the organization's appetite boundaries.
+
+## Financial Risk
+Uncertainty related to financial aspects of business operations, including market risk, credit risk, liquidity risk, and capital adequacy. Financial risks involve potential losses due to market movements, counterparty defaults, funding constraints, or insufficient capital to support strategic initiatives. In RBPM, financial risks are typically well-quantified, with established measurement techniques and controls. Managing financial risks involves setting clear limits aligned with the organization's overall risk appetite and ensuring that exposure remains within these boundaries.
+
+## Four Perspective Risk Map
+A visualization tool that shows key risks organized according to the four perspectives of the Strategy Map (financial, customer, internal processes, and learning and growth). This tool provides an at-a-glance view of risk exposures across the organization and highlights potential risk clusters or interrelationships. The Four Perspective Risk Map works alongside the Strategy Map and Appetite Alignment Matrix to provide a comprehensive view of strategic progress and risk position. It helps organizations identify where they may face multiple risks that could collectively threaten strategic objectives.
+
+## Governance
+The processes and practices that define an organization's strategic, operating, and decision-making boundaries, as well as how decisions are made and implemented. Governance establishes clear lines of authority, accountability, and responsibility. In RBPM, governance is a critical "soft" discipline that ensures strategic objectives are pursued within appropriate risk appetite boundaries. It includes board oversight, management committees, policy frameworks, delegation authorities, and control mechanisms that collectively shape and constrain organizational behavior.
+
+## Governance Structure
+The formal arrangement of bodies, roles, and relationships that oversee and direct an organization's activities. This typically includes the board of directors, board committees (such as audit, risk, and remuneration committees), executive management team, and management committees. In RBPM, an effective governance structure provides clear escalation paths for risk issues, ensures appropriate challenge and oversight of risk-taking activities, and maintains the integrity of risk management processes. It establishes the mechanisms through which risk appetite is set, communicated, and monitored.
+
+## Hazard Risk
+Risks associated with accidental losses, such as those arising from natural disasters, accidents, fire, property damage, or liability claims. Hazard risks traditionally formed the core focus of insurance-based risk management before the emergence of more comprehensive approaches. Within RBPM, hazard risks are typically managed through a combination of preventive controls, contingency planning, and risk transfer mechanisms like insurance. While less directly connected to strategy than other risk types, major hazard events can significantly disrupt strategic execution if not properly managed.
+
+## High-Quality Conversations
+Discussions that challenge assumptions, explore multiple perspectives, consider both opportunities and threats, and lead to better-informed decisions. In RBPM, high-quality conversations are a characteristic of a strategy-focused, risk-aware culture. They occur when people have access to relevant information about performance and risk, feel psychologically safe to raise concerns or challenging questions, and are motivated to find optimal solutions that balance risk and reward. Such conversations are essential for aligning risk-taking with strategy and operating within appetite.
+
+## Initiative Alignment Matrix
+A tool that visually demonstrates the relationship between strategic initiatives and objectives, risks, and/or controls. The matrix indicates the strength of alignment using percentage values (ranging from 0% for very weak alignment to 100% for very strong alignment). This tool helps organizations prioritize initiatives based on their strategic impact and identify potential gaps where important objectives or risks lack supporting initiatives. It promotes cross-functional discussion and ensures that change efforts focus on activities with the greatest strategic relevance.
+
+## ISO 31000
+An international standard for risk management published by the International Organization for Standardization. It provides principles, framework, and process guidance for managing risk in any organization regardless of size, activity, or sector. ISO 31000 defines risk as "the effect of uncertainty on objectives" and emphasizes that risk management should be integrated with organizational governance and decision-making processes. While ISO 31000 notably lacks explicit treatment of risk appetite, its process-oriented approach has significantly influenced RBPM development.
+
+## Key Business Drivers
+The critical variables that disproportionately influence an organization's success or failure. These fundamental drivers of value vary across industries and organizations. Examples might include technological innovation capabilities, access to capital at competitive rates, regulatory frameworks, or demographic trends. In RBPM, key business drivers form the foundation for establishing risk appetite, as they represent the factors most crucial to value creation. Understanding these drivers helps organizations focus their strategy and risk management efforts on the areas of greatest impact.
+
+## Key Performance Indicators (KPIs)
+Quantifiable measurements that gauge an organization's progress toward achieving its strategic objectives. KPIs track performance against targets and signal when interventions may be required to address performance gaps. In RBPM, KPIs are selected based on their relevance to strategic objectives and should include both leading (predictive) and lagging (outcome) measures. Effective KPIs provide actionable information that triggers performance conversations and improvement initiatives when performance deviates from expectations.
+
+## Key Risk Indicators (KRIs)
+Metrics that provide early warning signals of increasing risk exposure in various areas of an organization. KRIs track changes in risk profile and help predict potential risk events before they materialize. Examples might include staff turnover rates (indicating operational risk), customer complaint trends (indicating reputational risk), or liquidity ratios (indicating financial risk). In RBPM, KRIs work alongside KPIs and KCIs to provide a comprehensive view of strategic progress, risk position, and control effectiveness.
+
+## Key Control Indicators (KCIs)
+Metrics that measure the effectiveness of controls implemented to mitigate risks. KCIs provide insight into whether controls are operating as designed and achieving their intended risk mitigation effects. Examples might include the percentage of compliance exceptions, control testing failure rates, or the frequency of control overrides. In RBPM, KCIs complement KPIs and KRIs to provide a comprehensive picture of performance, risk, and control effectiveness. They help organizations determine whether their control environment is adequately supporting the pursuit of objectives within appetite boundaries.
+
+## Key Risks
+The most significant threats and opportunities that could impact an organization's ability to achieve its strategic objectives. These are the risks that warrant closest attention from senior management and the board due to their potential impact on value creation. In RBPM, key risks are identified at the level of strategic objectives and monitored through Key Risk Indicators. They are regularly reassessed as internal and external conditions change, with emerging risks promoted to key status when warranted.
+
+## Knowledge Age
+The post-industrial economic period characterized by a shift from physical production to knowledge-based services and innovation. In this era, competitive advantage derives primarily from intellectual capabilities rather than physical assets or access to raw materials. The knowledge age brings both opportunities and challenges for organizations, with rapidly evolving technology, complex global networks, and accelerated information exchange creating more dynamic risk environments. RBPM was developed specifically to help organizations navigate the uncertainty and complexity of the knowledge age.
+
+## Leading Indicators
+Metrics that predict future performance or risk events before they materialize. Leading indicators provide forward-looking information that enables proactive management interventions. Examples include employee satisfaction (leading indicator for retention), customer inquiries (leading indicator for sales), or near-miss incidents (leading indicator for accidents). In RBPM, effective performance and risk monitoring requires a balance of leading and lagging indicators, with leading indicators providing the early warning signals necessary for agile strategy adjustment.
+
+## Lagging Indicators
+Metrics that measure outcomes after they have occurred. Lagging indicators confirm whether objectives have been achieved or risks have materialized. Examples include revenue, profit, market share, customer churn rates, or accident statistics. While lagging indicators provide definitive evidence of performance or risk events, they offer limited opportunity for proactive intervention. In RBPM, lagging indicators are complemented by leading indicators to provide both outcome confirmation and early warning capabilities.
+
+## Line of Sight
+The clear connection between an individual's responsibilities and the organization's strategic objectives. Line of sight enables employees to understand how their work contributes to overall organizational success and operate within appropriate risk appetite boundaries. In RBPM, line of sight is established through the cascading of strategic objectives, risks, and controls to operational levels, supported by the RACI governance model. Technology solutions enhance line of sight by providing personalized dashboards that show individuals their specific responsibilities and performance metrics.
+
+## Malcolm Baldrige Framework
+A performance excellence framework administered by the U.S. National Institute of Standards and Technology. It provides criteria for evaluating organizational performance across seven categories: leadership; strategy; customers; measurement, analysis, and knowledge management; workforce; operations; and results. The Baldrige Framework emphasizes integrated management systems and has influenced performance management approaches, including the Balanced Scorecard. In RBPM, Baldrige concepts inform the holistic view of organizational performance and the integration of strategy and risk management.
+
+## Manage Performance
+The continuous process of monitoring objectives and their KPIs, identifying root causes of underperformance, and making adjustments. This RBPM discipline focuses on tracking progress toward strategic goals, understanding performance trends, and implementing improvement initiatives when necessary. It involves regular review of the Strategy Map and Performance Scorecard, analysis of performance exceptions, and decisions about resource allocation to close performance gaps. Effective performance management requires clear accountability for objectives and transparent reporting of results.
+
+## Manage Risk
+The process of understanding the risks an organization faces in pursuing its objectives and continuously monitoring and managing those risks. This RBPM discipline involves identifying key risks, assessing their potential impact and likelihood, implementing appropriate controls, and tracking risk indicators. It encompasses both threat mitigation and opportunity exploitation, recognizing that risk management is not solely about minimizing negative outcomes but also about enabling appropriate risk-taking. The discipline is supported by the Risk Map, Risk Scorecard, Control Map, and Control Scorecard.
+
+## Operational Excellence
+A strategic approach focused on delivering products and services with minimal cost and inconvenience to customers. Organizations pursuing operational excellence strive to lead their industry in price and convenience by minimizing overhead costs, eliminating intermediate production steps, reducing transaction costs, and optimizing business processes. This strategy, described by Treacy and Wiersema, requires rigorous process management, continuous improvement capabilities, and cost control discipline. In RBPM, organizations pursuing operational excellence must define appropriate risk appetite levels related to efficiency initiatives, cost reduction, and process standardization.
+
+## Operational Risk
+Uncertainty related to people, processes, systems, or external events that could result in losses due to inadequate or failed internal procedures. Operational risks include human error, fraud, system failures, business disruptions, legal liabilities, and model failures. In RBPM, operational risks are typically managed through process controls, business continuity planning, training programs, and technology solutions. Effective operational risk management requires clear risk tolerance levels, regular control assessments, and continuous monitoring of key risk indicators.
+
+## Operating Within Appetite
+A central concept in RBPM referring to the execution of strategy within the risk boundaries established by the board. Operating within appetite means that an organization's actual risk exposure aligns with its defined risk appetite across all relevant dimensions. This requires continuous monitoring of risk indicators, regular assessment of exposure versus appetite, and timely interventions when misalignments occur. The concept encompasses both avoiding excessive risk-taking and ensuring sufficient risk-taking to achieve strategic objectives.
+
+## Operational Processes
+The day-to-day activities that an organization undertakes to deliver products or services to customers. These processes transform inputs into outputs and create value through their efficient and effective execution. In RBPM, operational processes must be aligned with strategic objectives and operate within defined risk appetite boundaries. Process risks and controls should be identified, assessed, and monitored to ensure that operations support rather than undermine strategic goals. Process alignment is verified through the Process Alignment Matrix.
+
+## Opportunity
+The potential for gain or advantage arising from uncertainty. While risk is often associated with negative outcomes (threats), it also encompasses positive possibilities (opportunities). In RBPM, opportunity management is given equal importance to threat management, recognizing that sustainable value creation requires both protecting against losses and pursuing beneficial options. The Appetite Alignment Matrix highlights where organizations may be under-exposed to risk and potentially missing valuable opportunities by not taking enough risk relative to their appetite.
+
+## Optimal Zone
+The area of the Appetite Alignment Matrix where risk appetite and risk exposure are aligned. Organizations operating in this zone are taking the right amount of risk relative to their strategic objectives - neither too much nor too little. The optimal zone represents the target state for risk-based performance management, where risk-taking is appropriately calibrated to support strategy execution. Regular monitoring of appetite versus exposure helps organizations identify deviations from this zone and implement corrective actions to restore alignment.
+
+## Over-Exposed Zone
+The area of the Appetite Alignment Matrix where risk exposure exceeds risk appetite. Organizations operating in this zone are taking more risk than they have deemed acceptable, potentially exposing themselves to losses beyond their capacity to absorb. The over-exposed zone signals the need for risk reduction measures, which might include strengthening controls, transferring risk through insurance or outsourcing, avoiding certain activities entirely, or reconsidering strategic objectives. Addressing over-exposure typically requires immediate attention from management.
+
+## Performance Scorecard
+A management tool that tracks and reports on an organization's progress toward achieving its strategic objectives. It includes information on objective owners, appetite alignment status, KPIs, and performance scores. The Performance Scorecard helps senior management answer questions about whether the organization is achieving desired performance levels, whether performance is improving over time, how strategic initiatives are progressing, and what performance exceptions require investigation. It complements the Risk and Control Scorecards to provide a comprehensive view of risk-based performance management.
+
+## Preventive Controls
+Controls designed to deter or stop errors, irregularities, or adverse events from occurring. Preventive controls act before a risk materializes and help reduce the likelihood of negative outcomes. Examples include authorization requirements, physical access restrictions, segregation of duties, and input validation routines. Within RBPM, preventive controls form a first line of defense in the risk management framework. They help maintain risk exposure within appetite boundaries by addressing potential risk sources before they can cause harm.
+
+## Process Alignment Matrix
+A tool that visually demonstrates the relationship between operational processes and strategic objectives, risks, and/or controls. The matrix indicates the strength of alignment using percentage values (ranging from 0% for very weak alignment to 100% for very strong alignment). This tool helps organizations ensure that day-to-day activities support strategic goals and identify potential gaps where important objectives or risks lack enabling processes. It promotes cross-functional discussion and helps integrate strategy execution with operational management.
+
+## Product Leadership
+A strategic approach focused on producing a continuous stream of state-of-the-art products or services. Organizations pursuing product leadership strive to offer the most innovative and appealing products in their market, relying on creativity, rapid commercialization capabilities, and speed-oriented processes. This strategy, described by Treacy and Wiersema, requires substantial investment in research and development, willingness to cannibalize existing products, and tolerance for product development risks. In RBPM, organizations pursuing product leadership must define appropriate risk appetite levels for innovation activities.
+
+## RACI Model
+A framework for clarifying roles and responsibilities using four designations: Responsible (those who do the work), Accountable (the ultimate authority who approves the work), Consulted (those whose input is sought before decisions), and Informed (those who are updated on progress and decisions). In RBPM, the RACI model serves as a governance mechanism that establishes clear accountability for strategic objectives, key risks, and controls. It ensures that decision rights are appropriately assigned and that stakeholders receive the right level of involvement in risk and performance management activities.
+
+## RAGAR
+A scoring methodology used in RBPM that employs a five-point scale (Red, Amber, Green, Amber, Red) to communicate indicator status and exceptions. Unlike traditional RAG (Red, Amber, Green) approaches that focus only on underperformance, RAGAR recognizes that performance can also be too good, potentially indicating inappropriate risk-taking. The RAGAR approach acknowledges that indicators should typically operate within tolerance ranges rather than always maximizing or minimizing values. This promotes a culture focused on operating within defined parameters rather than blindly pursuing targets regardless of risk implications.
+
+## Red Ocean Strategy
+A term from W. Chan Kim and Renée Mauborgne's strategic framework describing competition in existing market spaces where industry boundaries and competitive rules are well-established. In red oceans, companies try to outperform rivals to capture greater market share in a limited market, often leading to commoditization and reduced profit margins. The term contrasts with Blue Ocean Strategy, which focuses on creating uncontested market spaces. In RBPM, organizations pursuing red ocean strategies must carefully define risk appetite levels related to competitive actions and pricing strategies.
+
+## Reputational Risk
+The potential for damage to an organization's standing, brand, or credibility among stakeholders. Reputational risk can arise from actions by the organization itself, its employees, or associated parties, or from external events beyond the organization's control. The impact of reputational damage can include customer loss, difficulty attracting talent, regulatory scrutiny, and reduced financial performance. In RBPM, reputational risk is typically managed through governance structures, ethical frameworks, stakeholder management programs, and crisis communication capabilities.
+
+## Residual Risk
+The risk that remains after controls have been implemented to mitigate inherent risk. Residual risk represents the actual exposure that an organization faces after accounting for its risk management efforts. In RBPM, residual risk is assessed against risk appetite to determine whether additional controls are needed or whether existing controls can be relaxed. Effective risk management involves optimizing control investments to achieve appropriate residual risk levels rather than minimizing all risks regardless of cost.
+
+## Risk Appetite
+The amount and type of risk that an organization is willing to accept, and must take, to achieve its strategic objectives and create value for stakeholders. Risk appetite establishes boundaries for risk-taking activities and serves as a reference point for evaluating whether actual risk exposure is appropriate. In RBPM, risk appetite is the central concept that connects strategy and risk management. It should be clearly articulated by the board, communicated throughout the organization, and regularly reviewed as conditions change.
+
+## Risk Appetite Statement
+A formal expression of an organization's willingness to take specific types and amounts of risk to achieve its strategic objectives. The statement typically includes both qualitative descriptions and quantitative parameters that define acceptable risk levels across various risk categories and business activities. In RBPM, a well-crafted risk appetite statement serves as a powerful management tool, providing clear guidance for decision-making at all levels of the organization. It establishes the framework within which strategy can be executed in a risk-aware manner.
+
+## Risk Assessment
+The process of identifying, analyzing, and evaluating risks to determine their potential impact and likelihood. Risk assessment provides the foundation for risk management decisions by establishing which risks require attention and what level of treatment is appropriate. In RBPM, risk assessment is conducted at both strategic and operational levels, with key risks linked directly to strategic objectives. The assessment process typically employs a consistent methodology across the organization to ensure comparability and aggregation of risk information.
+
+## Risk-Aware Culture
+An organizational environment where employees at all levels understand the importance of risk management, feel responsible for identifying and reporting risks, consider risk implications in their decision-making, and operate within established risk appetite boundaries. In RBPM, a risk-aware culture is complemented by strategic focus to create a "strategy-focused, risk-aware culture" that enables sustainable strategy execution. Cultural factors often determine the success or failure of risk management frameworks regardless of their technical sophistication.
+
+## Risk-Based Performance Management (RBPM)
+An integrated framework and methodology for managing organizational performance and risk through the lens of risk appetite. RBPM embeds risk management into strategic and operational decision-making to ensure that organizations execute their strategies while "operating within appetite." The approach comprises seven disciplines: set strategy, manage performance, manage risk, align risk to strategy, governance, culture, and communication, with appetite serving as the binding element across all disciplines. RBPM helps organizations navigate "continuous turbulent times" by balancing strategic ambition with prudent risk management.
+
+## Risk Bow-Tie
+A visualization tool for risk analysis that illustrates the relationship between risk causes, risk events, and risk consequences. The risk event forms the center of the bow-tie, with causes branching to the left and consequences to the right. Controls can be mapped to both the cause and consequence sides, showing preventive controls (reducing likelihood) and detective/corrective controls (reducing impact). The Bow-Tie helps clarify risk definitions and enables more targeted risk management by addressing specific causes and consequences rather than generic risk categories.
+
+## Risk Categories
+Classifications used to organize and group similar types of risks for consistent identification, assessment, and management. Common risk categories include strategic, financial, operational, compliance, reputational, and external risks. In RBPM, risk categories help ensure comprehensive risk identification and enable aggregation of risk information across the organization. They provide a structured approach to risk management while recognizing that risks often span multiple categories and require integrated treatment rather than siloed approaches.
+
+## Risk Clustering
+The phenomenon where multiple risks concentrate in particular areas of the organization or strategy, potentially creating compounding effects that exceed the sum of individual risk impacts. Risk clustering can be visualized using the Four Perspective Risk Map, which shows how risks distribute across strategic perspectives. Identifying risk clusters helps organizations understand potential systemic vulnerabilities and implement more comprehensive mitigation strategies. In RBPM, addressing risk clustering may require enterprise-wide approaches rather than risk-by-risk treatments.
+
+## Risk Controls
+The policies, procedures, practices, or other mechanisms designed to modify risk by reducing likelihood, impact, or both. Controls can be preventive (reducing the chance of a risk materializing) or detective (identifying when a risk has materialized). In RBPM, controls should be proportionate to the risk they address and aligned with the organization's risk appetite. Effective controls enable pursuit of strategic objectives while maintaining risk exposure within acceptable boundaries. Control effectiveness is monitored through Key Control Indicators and regular assessment processes.
+
+## Risk Culture
+The norms, attitudes, and behaviors related to risk awareness, risk-taking, and risk management within an organization. Risk culture influences how employees identify, understand, discuss, and act upon current and future risks. In RBPM, a positive risk culture is characterized by transparency, accountability, appropriate challenge, continuous learning, and balance between risk control and value creation. Risk culture is shaped by leadership behaviors, incentive structures, governance mechanisms, and communication practices, and serves as a critical enabler of effective risk-based performance management.
+
+## Risk Event
+An occurrence or change of a particular set of circumstances that results in a risk materializing. Risk events can lead to positive outcomes (opportunities realized) or negative outcomes (threats
+## Risk Event
+An occurrence or change of a particular set of circumstances that results in a risk materializing. Risk events can lead to positive outcomes (opportunities realized) or negative outcomes (threats materialized). In RBPM, risk events are analyzed to understand their causes, impacts, and control failures, with this information feeding back into the risk management process. Effective risk event management includes timely identification, appropriate escalation, root cause analysis, and implementation of corrective actions. Risk event data provides valuable input for refining risk assessments and improving control effectiveness.
+
+## Risk Exposure
+The extent to which an organization is subject to specific risks at a point in time. Risk exposure represents the combination of risk likelihood and impact after considering existing controls (residual risk). In RBPM, exposure is regularly assessed and compared to risk appetite to determine whether the organization is operating within acceptable risk boundaries. The Appetite Alignment Matrix visually displays the relationship between exposure and appetite, highlighting areas of over-exposure or under-exposure that require management attention.
+
+## Risk Heat Map
+A visual representation of risks based on their assessed likelihood and impact. Typically presented as a two-dimensional matrix with likelihood on one axis and impact on the other, with risks plotted according to their assessment scores. Color coding (usually red, amber, green) indicates risk severity, with risks in the high-likelihood, high-impact quadrant requiring greatest attention. In RBPM, Heat Maps help prioritize risk mitigation efforts and communicate risk positions to stakeholders, though they should be complemented by more nuanced analyses.
+
+## Risk Identification
+The process of finding, recognizing, and describing risks that could affect an organization's ability to achieve its objectives. Risk identification seeks to develop a comprehensive inventory of risks from both internal and external sources, drawing on historical data, theoretical analysis, informed opinions, stakeholder input, and expert assessments. In RBPM, risk identification focuses particularly on risks related to strategic objectives, ensuring that the most significant strategic threats and opportunities are captured and managed.
+
+## Risk Indicators
+Metrics that provide insight into risk positions, trends, and emerging issues. Risk indicators include both Key Risk Indicators (KRIs) that track major known risks and emerging risk indicators that monitor potential new threats or opportunities. In RBPM, risk indicators complement performance indicators to provide a balanced view of progress toward strategic objectives and associated risk exposures. Effective risk indicators combine leading measures (predictive) and lagging measures (confirmatory) to enable both proactive and reactive risk management.
+
+## Risk Management Framework
+The structured approach an organization uses to identify, assess, respond to, and monitor risks. A risk management framework typically includes risk governance, risk appetite definition, risk assessment methodologies, control implementation, reporting processes, and continuous improvement mechanisms. In RBPM, the risk management framework is fully integrated with strategy execution processes rather than operating as a separate system. This integration ensures that risk management directly supports strategic decision-making rather than functioning as a compliance exercise.
+
+## Risk Management Function
+The organizational unit responsible for designing, implementing, and coordinating risk management activities across the enterprise. The risk management function typically develops risk policies, provides risk assessment methodologies, facilitates risk identification and analysis, monitors risk exposures, reports to governance bodies, and promotes risk awareness. In RBPM, the risk management function serves as a strategic partner to the business rather than just a control function, helping to optimize risk-taking in pursuit of strategic objectives.
+
+## Risk Management Strategy
+The organization's approach to assessing and managing risk, articulating how it will identify, analyze, and address the risks to its objectives. A risk management strategy includes risk governance structures, roles and responsibilities, appetite setting, assessment methodologies, treatment approaches, monitoring processes, and continuous improvement mechanisms. In RBPM, the risk management strategy aligns with and supports the overall business strategy, ensuring that risk management enables rather than constrains strategic execution.
+
+## Risk Map
+A visual representation that displays risks according to a defined classification scheme, such as risk categories, business units, or strategic perspectives. In RBPM, the Four Perspective Risk Map organizes risks according to the Balanced Scorecard perspectives (financial, customer, internal processes, learning and growth), enabling clearer understanding of risk interdependencies and alignment with strategic objectives. Risk Maps help identify risk concentrations, highlight relationships between risks, and communicate risk positions to stakeholders.
+
+## Risk Master
+A term from Accenture's research describing organizations that excel at creating value through superior risk management. Risk Masters integrate risk considerations into strategic planning and decision-making processes, deploy sophisticated measurement and analytics capabilities, align risk management across business units, establish C-level risk leadership, infuse risk awareness throughout their culture, and invest in continuous improvement of risk capabilities. The RBPM approach incorporates many characteristics identified in Risk Masters, particularly their focus on creating competitive advantage through risk management.
+
+## Risk Maturity
+The level of development, sophistication, and effectiveness of an organization's risk management capabilities. Risk maturity models typically define stages ranging from initial/rudimentary to advanced/optimized, with each stage characterized by increasingly comprehensive risk identification, more sophisticated assessment methodologies, more effective controls, better integration with decision-making, and stronger risk cultures. In RBPM, understanding current risk maturity helps organizations develop appropriate implementation roadmaps for enhancing their integrated strategy and risk management capabilities.
+
+## Risk Owner
+The person or entity with the accountability and authority to manage a risk. Risk owners are responsible for ensuring that appropriate resources and attention are directed toward risk assessment, control implementation, monitoring, and reporting. In RBPM, risk ownership is formalized through the RACI model, which distinguishes between ultimate accountability and operational responsibility for risk management activities. Clear risk ownership ensures that risks receive appropriate attention and that risk-related decisions are made at the right organizational level.
+
+## Risk Profile
+The aggregate view of an organization's risk exposure across all risk categories and business activities. The risk profile presents a comprehensive picture of the organization's risk position at a point in time, considering both threats and opportunities. In RBPM, the risk profile is regularly assessed against risk appetite to determine whether the organization is operating within acceptable risk boundaries. Changes in the risk profile may trigger adjustments to strategy, controls, or risk appetite as circumstances evolve.
+
+## Risk Register
+A documented record of identified risks, their assessment details, planned risk responses, control information, and monitoring requirements. The risk register serves as a central repository of risk information and a management tool for tracking risk status and treatment actions. In RBPM, the risk register links risks directly to strategic objectives, ensuring that risk information directly supports strategy execution decisions. Advanced risk registers may include additional elements like key risk indicators, control effectiveness assessments, and appetite alignment status.
+
+## Risk Response
+The approach an organization takes to address an identified risk. Common risk responses include:
+- Accept (take the risk without additional controls)
+- Avoid (eliminate the activity or circumstance creating the risk)
+- Transfer (shift risk to a third party through insurance or outsourcing)
+- Reduce (implement controls to decrease likelihood or impact)
+- Exploit (take actions to increase the probability of beneficial outcomes)
+In RBPM, risk responses should align with risk appetite and contribute to strategic objectives rather than simply minimizing all risks.
+
+## Risk Scorecard
+A management tool that tracks and reports on an organization's key risks and their status. It includes information on risk owners, appetite alignment status, risk assessment results, key risk indicators, and risk scores. The Risk Scorecard helps senior management answer questions about whether risks are being effectively managed, whether risk exposures are within tolerance levels, whether risk management trends are moving in the right direction, and what risk exceptions require investigation. It complements the Performance and Control Scorecards to provide a comprehensive view of risk-based performance management.
+
+## Risk-Taking
+The deliberate acceptance of uncertainty in pursuit of strategic objectives. Risk-taking is an inherent part of business activity and value creation - without some level of risk-taking, organizations cannot innovate, grow, or generate returns. In RBPM, the focus is on appropriate risk-taking within defined appetite boundaries rather than risk minimization. The Appetite Alignment Matrix highlights where organizations may be taking too much risk (over-exposed) or not enough risk (under-exposed) relative to their strategic ambitions.
+
+## Risk Tolerance
+The acceptable level of variation in the pursuit of specific objectives. Risk tolerance establishes the operational parameters within which the organization can operate while remaining consistent with its broader risk appetite. In RBPM, tolerance levels are expressed as thresholds around Key Risk Indicators, defining acceptable boundaries for risk metrics. Organizations with higher risk appetite will typically set wider tolerance ranges, allowing greater variation, while those with lower appetite will set narrower ranges requiring tighter control.
+
+## Risk Treatment
+The process of selecting and implementing measures to modify risk exposure. Risk treatment options include avoiding the risk, taking the risk to pursue an opportunity, removing the risk source, changing the likelihood or consequences, sharing the risk with another party, or retaining the risk by informed decision. In RBPM, risk treatment decisions consider both the organization's risk appetite and the strategic importance of related objectives, ensuring that control investments align with strategic priorities.
+
+## Root Cause Analysis
+A systematic process for identifying the underlying causes of problems or events rather than just addressing symptoms. Root cause analysis techniques include the "5 Whys" approach (asking why repeatedly to drill down to fundamental causes) and Ishikawa diagrams (fishbone diagrams that categorize potential causes). In RBPM, root cause analysis is applied to risk events to understand their origins and implement more effective preventive controls. It helps organizations address systemic issues rather than treating individual symptoms.
+
+## Set Strategy
+The RBPM discipline focused on developing organizational direction through defining vision, mission, strategic objectives, and risk appetite. This discipline involves analyzing the business environment, articulating the business model, identifying key drivers, and determining the level of risk required to achieve strategic goals. Setting strategy establishes the foundation for all other RBPM disciplines by defining what the organization aims to achieve and the risk boundaries within which it will operate. Effective strategy setting requires integration of performance ambitions with risk considerations.
+
+## Shadow of the Leader
+A concept describing how leadership behaviors create the cultural tone that shapes working practices and attitudes throughout an organization. The term recognizes that employees tend to emulate the behaviors modeled by their leaders, particularly regarding risk awareness, ethical standards, and performance expectations. In RBPM, the shadow of the leader significantly influences whether risk appetite boundaries are respected in day-to-day decision-making. Leaders who demonstrate commitment to operating within appetite create cultures where appropriate risk-taking flourishes.
+
+## Scenario Planning
+A strategic planning method that organizations use to develop flexible long-term plans by exploring different possible future states. Scenario planning involves creating detailed narratives about potential future environments and testing strategic options against these scenarios to identify robust approaches. In RBPM, scenario planning helps organizations understand potential risk exposures under different conditions and develop appropriate contingency plans. It is particularly valuable for addressing external risks that cannot be directly controlled but require adaptive responses.
+
+## Shareholder Value
+The total worth of a company to its shareholders, typically measured through stock price appreciation and dividend payments. Creating sustainable shareholder value is the ultimate goal of commercial organizations and serves as the final outcome of the RBPM framework. The RBPM approach emphasizes that sustainable value creation requires balancing short-term performance with prudent risk management, ensuring that current returns are not achieved at the expense of future viability through excessive risk-taking or inadequate capability development.
+
+## Single Source of Truth
+A concept emphasizing the importance of maintaining consistent, authoritative data sources for organizational decision-making. In RBPM, a single source of truth refers to having unified repositories for strategic objectives, risks, controls, and performance metrics, ensuring that all stakeholders work with the same information. Technology solutions supporting RBPM should provide this unified view, eliminating conflicting data versions that can undermine effective risk-based performance management. This contrasts with the fragmented, inconsistent information that often results from spreadsheet-based approaches.
+
+## Soft Disciplines
+The RBPM components focused on organizational behavior, relationships, and communication rather than technical processes. The soft disciplines include governance, culture, and communication, which collectively enable the effective functioning of the "hard" disciplines (set strategy, manage performance, manage risk, align risk to strategy). While often more challenging to implement than technical solutions, the soft disciplines are critical success factors for RBPM implementation, as they shape how people interact with the framework and whether they embrace its principles in daily decision-making.
+
+## Strategic Initiatives
+Significant projects or programs designed to close performance gaps and drive progress toward strategic objectives. Unlike operational activities, strategic initiatives represent one-time, transformational efforts with defined start and end dates. In RBPM, initiatives should be prioritized based on their contribution to strategic objectives and their risk profiles, with the Initiative Alignment Matrix providing a visualization of these relationships. Effective initiative management includes clear ownership, regular progress monitoring, and appropriate risk assessment.
+
+## Strategic Objectives
+The specific goals an organization aims to achieve in pursuit of its vision and mission. Strategic objectives describe what success looks like across different aspects of performance (financial, customer, internal processes, and people/capabilities) and provide the focal points for strategy execution efforts. In RBPM, objectives serve as anchors for both performance management and risk management, with each objective having defined key performance indicators, associated risks, appetite levels, and supporting initiatives.
+
+## Strategic Risk
+Uncertainty related to strategic choices and assumptions, such as misreading market trends, pursuing flawed business models, or making inappropriate competitive moves. Strategic risks involve the potential for major deviations from expected outcomes due to inadequate strategic analysis or changing external conditions. In RBPM, strategic risk management focuses on challenging strategic assumptions, monitoring environmental changes, and maintaining strategic flexibility. Effective governance processes ensure regular review of strategy relevance in light of evolving conditions.
+
+## Strategic Themes
+Major focus areas that organize strategic objectives into coherent groups addressing specific aspects of the strategy. Themes typically span multiple perspectives of the Strategy Map, connecting related objectives into causal chains that describe how value is created in different domains. Examples might include "operational excellence," "customer intimacy," or "innovation leadership." In RBPM, strategic themes help communicate strategy more effectively and can serve as a basis for risk categorization and appetite definition.
+
+## Strategy
+A sustainable and defensible position that enables an organization to achieve its objectives while operating within defined risk appetite boundaries. Strategy describes how an organization will create and capture value in its chosen markets, differentiating itself from competitors through deliberate choices about which activities to pursue and which to avoid. In RBPM, strategy must be formulated with explicit consideration of risk appetite, ensuring that strategic ambitions align with the organization's willingness and capacity to take risks.
+
+## Strategy Map
+A visual representation of an organization's strategy that illustrates the cause-and-effect relationships between strategic objectives across four perspectives: financial, customer, internal processes, and learning and growth. The Strategy Map tells the "story" of the strategy by showing how capabilities and processes drive customer value and financial outcomes. In RBPM, the Strategy Map serves as a foundation for integrating risk management with strategy execution, with each objective linked to associated risks, controls, and appetite levels.
+
+## Strategy-Focused Organization
+A concept developed by Robert Kaplan and David Norton describing organizations that excel at strategy execution by following five principles: translate strategy into operational terms, align the organization to the strategy, make strategy everyone's everyday job, make strategy a continual process, and mobilize change through executive leadership. The RBPM approach builds on this foundation, adding risk management integration as a critical component for sustainable strategy execution in volatile environments.
+
+## Strategy-Focused, Risk-Aware Culture
+An organizational environment characterized by simultaneous focus on strategic objectives and awareness of associated risks. This culture combines strategic clarity, risk understanding, appropriate challenge, transparent communication, and decision-making aligned with risk appetite. In RBPM, a strategy-focused, risk-aware culture is characterized by seven key attributes: driven by a compelling vision, living by clear values, led with integrity, aligning risk-taking to strategy, establishing clear accountabilities, engaging in high-quality conversations, and aligning incentives to appetite.
+
+## Sarbanes-Oxley Act
+A U.S. federal law enacted in 2002 in response to major corporate accounting scandals, establishing new or expanded requirements for public company boards, management, and accounting firms. The act includes provisions on corporate responsibility, enhanced financial disclosures, auditor independence, and corporate fraud accountability. Compliance with Sarbanes-Oxley drove significant enhancements in internal control frameworks and influenced the development of enterprise risk management approaches, contributing to the foundation upon which RBPM was later built.
+
+## Tail Risk
+The risk of extreme events occurring with low probability but high impact. Tail risks represent the outer portions of a probability distribution, typically three or more standard deviations from the mean. Examples include major natural disasters, terrorist attacks, or systemic financial crises. In RBPM, tail risks require special consideration through scenario planning, stress testing, and contingency planning, even when their probability is low. Management teams should regularly conduct "tail risk meetings" to discuss potential high-impact, low-probability events and appropriate responses.
+
+## Taylorism
+The scientific management principles developed by Frederick W. Taylor in the early 20th century, emphasizing standardized work methods, detailed instructions, output-based incentives, and separation of planning from execution. Taylorism treated workers as interchangeable parts in industrial processes, prohibiting their involvement in process improvement. While these principles greatly improved manufacturing efficiency, they created rigid organizational structures poorly suited to knowledge work. RBPM represents a post-industrial approach that integrates strategic thinking and risk awareness throughout the organization rather than concentrating it at the top.
+
+## Three Lines of Defense
+A model for organizing risk management responsibilities within an organization:
+- First line: Business units that own and manage risks in their operations
+- Second line: Risk management and compliance functions that oversee risk frameworks and challenge first-line activities
+- Third line: Internal audit that provides independent assurance on risk management effectiveness
+In RBPM, the three lines model is complemented by the RACI governance approach to create clear accountability for risk management while promoting appropriate challenge and oversight throughout the organization.
+
+## Total Quality Management (TQM)
+A management approach focused on long-term success through customer satisfaction, based on the participation of all members of an organization in improving processes, products, services, and culture. TQM principles, particularly as articulated by W. Edwards Deming and Joseph Juran, emphasized continuous improvement, customer focus, and employee involvement. TQM represents an important historical influence on RBPM, especially in its recognition that quality and performance improvement require cultural change rather than just technical solutions.
+
+## Under-Exposed Zone
+The area of the Appetite Alignment Matrix where risk appetite exceeds risk exposure. Organizations operating in this zone are taking less risk than they have deemed acceptable, potentially missing valuable opportunities for growth, innovation, or efficiency. The under-exposed zone signals potential for increased risk-taking within appetite boundaries, which might involve exploring new markets, introducing innovative products, or relaxing excessive controls. Addressing under-exposure offers opportunities for enhanced value creation while remaining consistent with risk governance requirements.
+
+## Value
+The worth, importance, or usefulness of something to stakeholders. In commercial organizations, value typically refers to shareholder returns, while in public sector organizations, it encompasses benefits to citizens, communities, and society. In RBPM, sustainable value creation requires balancing short-term performance with long-term viability through appropriate risk-taking. Value is created not just by avoiding risks but by deliberately taking risks where the potential returns justify the exposure, all within defined appetite boundaries.
+
+## Value Drivers
+The factors that increase the value of a business or project. Value drivers can be operational (such as sales growth, operating margins, or capital efficiency) or strategic (such as competitive position, innovation capabilities, or brand strength). In RBPM, understanding value drivers is essential for defining both strategic objectives and risk appetite, as these drivers represent the most critical areas for performance improvement and risk management focus. Value driver analysis helps prioritize management attention and resource allocation.
+
+## Value Disciplines
+A strategic framework developed by Michael Treacy and Fred Wiersema identifying three distinct approaches to market leadership: operational excellence (lowest cost and inconvenience), customer intimacy (tailored solutions for specific customer segments), and product leadership (continuous innovation). The authors argued that organizations should excel in one discipline while maintaining threshold capabilities in the others. In RBPM, the chosen value discipline influences both strategic objectives and appropriate risk appetite levels across different business activities.
+
+## Walker Report
+An influential review of corporate governance in UK banks and financial institutions conducted by Sir David Walker following the 2008 financial crisis. The report made recommendations on board composition and qualifications, risk management governance, remuneration practices, and shareholder engagement. It emphasized the importance of aligning risk management with strategy and ensuring that remuneration structures support appropriate risk-taking. The Walker Report influenced subsequent governance codes and contributed to evolving expectations for board risk oversight across sectors.

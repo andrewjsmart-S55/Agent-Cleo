@@ -1,0 +1,80 @@
+FINANCIALS SHEET - 3-LEVEL STRUCTURE
+====================================================================================================
+
+
+LEVEL 1
+----------------------------------------------------------------------------------------------------
+
+Financial
+Description: None
+
+
+LEVEL 2
+----------------------------------------------------------------------------------------------------
+
+Costs
+Description: None
+
+
+Revenue
+Description: None
+
+
+Profit
+Description: None
+
+
+Capital
+Description: None
+
+
+Liquidity
+Description: None
+
+
+Accuracy & Transparancy
+Description: None
+
+
+LEVEL 3
+----------------------------------------------------------------------------------------------------
+
+None
+Description: None
+
+
+None
+Description: None
+
+
+None
+Description: None
+
+
+None
+Description: None
+
+
+None
+Description: None
+
+
+None
+Description: None
+
+
+None
+Description: None
+
+
+None
+Description: None
+
+
+None
+Description: None
+
+
+None
+Description: None
+

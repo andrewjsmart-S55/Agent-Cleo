@@ -1,0 +1,87 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+venv/
+ENV/
+env/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Todoist API Token (CRITICAL - NEVER COMMIT)
+TODOIST_API_TOKEN
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+agents.db
+
+# Flask
+instance/
+.webassets-cache
+
+# Logs
+*.log
+logs/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Agent Output folders (optional - exclude if contains sensitive data)
+# Uncomment these lines if you want to exclude agent outputs:
+# */Output/*
+# !*/Output/.gitkeep
+
+# Context files with sensitive information
+# Add specific files here if needed
+# */Context/sensitive-file.md
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+temp/
+tmp/
+
+# Claude Code
+.claude/
+
+# Test files
+test_*.py
+*_test.py
