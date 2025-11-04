@@ -54,7 +54,9 @@ class TodoistIntegration:
             (now - self._cache_timestamp).seconds > 300):
 
             try:
-                self._projects_cache = self.api.get_projects()
+                # API v3 returns a paginator that yields lists
+                projects_paginator = self.api.get_projects()
+                self._projects_cache = list(projects_paginator)[0]  # Get the actual list from paginator
                 self._cache_timestamp = now
             except Exception as e:
                 print(f"Error fetching projects: {e}")
@@ -121,6 +123,11 @@ class TodoistIntegration:
                 timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
                 full_description = f"**Created by {agent_name}** at {timestamp}\n\n{description}"
 
+            # Ensure Agent-Cleo label is always included
+            task_labels = labels or []
+            if "Agent-Cleo" not in task_labels:
+                task_labels = task_labels + ["Agent-Cleo"]
+
             # Create the task
             task = self.api.add_task(
                 content=content,
@@ -128,7 +135,7 @@ class TodoistIntegration:
                 project_id=project_id,
                 priority=priority,
                 due_string=due_string,
-                labels=labels or []
+                labels=task_labels
             )
 
             return {

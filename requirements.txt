@@ -3,4 +3,4 @@ Flask-SQLAlchemy==3.1.1
 APScheduler==3.10.4
 SQLAlchemy==2.0.23
 Werkzeug==3.0.1
-todoist-api-python==2.1.4
+todoist-api-python==3.1.0
