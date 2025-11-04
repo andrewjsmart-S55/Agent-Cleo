@@ -247,6 +247,91 @@ class TodoistIntegration:
             for p in projects
         ]
 
+    def get_tasks(self, filter_string: str = None) -> List[Task]:
+        """
+        Get tasks from Todoist
+
+        Args:
+            filter_string: Optional Todoist filter string (e.g., "today", "tomorrow", "p1")
+
+        Returns:
+            List of Task objects
+        """
+        try:
+            if filter_string:
+                return self.api.get_tasks(filter=filter_string)
+            else:
+                return self.api.get_tasks()
+        except Exception as e:
+            print(f"Error fetching tasks: {e}")
+            return []
+
+    def get_tasks_by_date(self, target_date: datetime = None) -> List[Dict]:
+        """
+        Get tasks due on a specific date
+
+        Args:
+            target_date: The date to filter tasks by (defaults to today)
+
+        Returns:
+            List of dictionaries with task information
+        """
+        if target_date is None:
+            target_date = datetime.now()
+
+        target_date_str = target_date.strftime("%Y-%m-%d")
+
+        try:
+            tasks = self.api.get_tasks()
+            filtered_tasks = []
+
+            for task in tasks:
+                if task.due and task.due.date:
+                    # Handle both datetime and date formats
+                    task_date = task.due.date
+                    if 'T' in task_date:
+                        # DateTime format
+                        task_date = task_date.split('T')[0]
+
+                    if task_date == target_date_str:
+                        # Get project name
+                        project_name = "Inbox"
+                        if task.project_id:
+                            project = next(
+                                (p for p in self.get_projects() if p.id == task.project_id),
+                                None
+                            )
+                            if project:
+                                project_name = project.name
+
+                        filtered_tasks.append({
+                            'id': task.id,
+                            'content': task.content,
+                            'description': task.description,
+                            'project': project_name,
+                            'priority': task.priority,
+                            'due': task.due.date,
+                            'labels': task.labels,
+                            'url': task.url,
+                            'is_completed': task.is_completed
+                        })
+
+            return filtered_tasks
+
+        except Exception as e:
+            print(f"Error fetching tasks by date: {e}")
+            return []
+
+    def get_tomorrow_tasks(self) -> List[Dict]:
+        """
+        Get all tasks due tomorrow
+
+        Returns:
+            List of dictionaries with task information
+        """
+        tomorrow = datetime.now() + timedelta(days=1)
+        return self.get_tasks_by_date(tomorrow)
+
 
 # Convenience functions for agents to use
 def create_task_for_andrew(
@@ -318,6 +403,39 @@ def get_available_projects() -> List[str]:
         return [p['name'] for p in projects]
     except Exception as e:
         print(f"Error fetching projects: {e}")
+        return []
+
+
+def get_tomorrow_tasks() -> List[Dict]:
+    """
+    Get all tasks due tomorrow
+
+    Returns:
+        List of task dictionaries with details
+    """
+    try:
+        integration = TodoistIntegration()
+        return integration.get_tomorrow_tasks()
+    except Exception as e:
+        print(f"Error fetching tomorrow's tasks: {e}")
+        return []
+
+
+def get_tasks_for_date(target_date: datetime = None) -> List[Dict]:
+    """
+    Get tasks for a specific date
+
+    Args:
+        target_date: The date to get tasks for (defaults to today)
+
+    Returns:
+        List of task dictionaries
+    """
+    try:
+        integration = TodoistIntegration()
+        return integration.get_tasks_by_date(target_date)
+    except Exception as e:
+        print(f"Error fetching tasks: {e}")
         return []
 
 
