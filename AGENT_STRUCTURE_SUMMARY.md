@@ -11,7 +11,7 @@ Successfully reviewed, enhanced, and standardized the Agent-Cleo orchestration s
 ### Tier 1: Master Orchestration
 - **Agent-Cleo** - Master orchestration agent providing strategic direction to all agents
 
-### Tier 2: Personal & Team Agents (16 Total)
+### Tier 2: Personal & Team Agents (8 Total)
 
 #### Personal Agents (2)
 Work directly with Andrew to achieve personal goals:
@@ -28,7 +28,7 @@ Work directly with Andrew to achieve personal goals:
    - ✅ Prompt-Manifest.md created
    - ✅ Context folder exists
 
-#### Team Agents (5)
+#### Team Agents (6)
 Team Managing Directors who orchestrate Worker Agents:
 
 1. **Ascendore-MD** - General business unit management
@@ -38,28 +38,35 @@ Team Managing Directors who orchestrate Worker Agents:
    - ✅ Context folder created
    - ✅ Output folder created
 
-2. **DecideWright-MD** - Decision support and analytics portfolio
+2. **Boxzero-MD** - Strategic business initiative management
+   - Location: `Team Agents/Boxzero-MD/`
+   - Focus: Strategic initiatives, operational excellence, innovation
+   - ✅ Prompt-Manifest.md created
+   - ✅ Context folder created
+   - ✅ Output folder created
+
+3. **DecideWright-MD** - Decision support and analytics portfolio
    - Location: `Team Agents/DecideWright-MD/`
    - Sub-brands: RBPM-MD, Predixtive-MD, Greentabula-MD, Greenledger-MD
    - Focus: Decision frameworks, predictive analytics, ESG solutions
    - ✅ Prompt-Manifest.md created
    - ✅ Context folder exists
 
-3. **S55-MD (Studio55London-MD)** - Creative and technology services
+4. **S55-MD (Studio55London-MD)** - Creative and technology services
    - Location: `Team Agents/S55-MD/`
    - Sub-brands: Apportal-MD, Trisingularity-MD
    - Focus: Digital innovation, application platforms, AI/ML solutions
    - ✅ Prompt-Manifest.md created
    - ✅ Context folder exists
 
-4. **SparkwireMedia-MD** - Media and content business
+5. **SparkwireMedia-MD** - Media and content business
    - Location: `Team Agents/SparkwireMedia-MD/`
    - Sub-brands: NoFatSmoker-MD, Trisingularity-MD
    - Focus: Content creation, social media, wellness lifestyle
    - ✅ Prompt-Manifest.md created
    - ✅ Context folder exists
 
-5. **ThinTanks-MD** - Thought leadership and research
+6. **ThinTanks-MD** - Thought leadership and research
    - Location: `Team Agents/ThinTanks-MD/`
    - Sub-teams: Thintanks-Marketing-Agent
    - Focus: Strategic research, advisory services, thought leadership
@@ -132,7 +139,7 @@ Team Managing Directors who orchestrate Worker Agents:
    - ✅ Context folder exists (was already present)
 
 
-### Tier 4: Expert Agents (10)
+### Tier 4: Expert Agents (11)
 Subject Matter Experts called upon by other agents for specialized expertise:
 
 1. **Expert-RegTech** - Regulatory Technology Expert
@@ -177,7 +184,14 @@ Subject Matter Experts called upon by other agents for specialized expertise:
    - ✅ Context folder created
    - ✅ Output folder created
 
-7. **Expert-Copywriter** - Copywriting Expert
+7. **Expert-MarketingStrategist** - Marketing Strategy & Positioning Expert
+   - Location: `Expert Agents/Expert-MarketingStrategist/`
+   - Focus: Market analysis, strategic positioning, go-to-market strategy, competitive strategy
+   - ✅ Prompt-Manifest.md created
+   - ✅ Context folder created
+   - ✅ Output folder created
+
+8. **Expert-Copywriter** - Copywriting Expert
    - Location: `Expert Agents/Expert-Copywriter/`
    - Focus: Persuasive writing, brand voice, conversion copywriting
    - ✅ Prompt-Manifest.md created

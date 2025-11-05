@@ -469,6 +469,115 @@ def test_todoist_integration():
         }), 500
 
 
+@app.route('/api/todoist/tasks', methods=['GET'])
+def get_todoist_tasks():
+    """Get tasks from Todoist, optionally filtered by label"""
+    try:
+        label = request.args.get('label')
+        include_completed = request.args.get('include_completed', 'false').lower() == 'true'
+
+        integration = TodoistIntegration()
+
+        if label:
+            tasks = integration.get_tasks(label=label)
+        else:
+            # Default to getting Agent-Cleo tasks
+            tasks = integration.get_agent_cleo_tasks(include_completed=include_completed)
+
+        return jsonify({
+            'success': True,
+            'tasks': tasks,
+            'count': len(tasks)
+        })
+
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e),
+            'message': f'Failed to fetch Todoist tasks: {str(e)}'
+        }), 500
+
+
+@app.route('/api/todoist/tasks/agent-cleo', methods=['GET'])
+def get_agent_cleo_tasks():
+    """Get all tasks labeled with Agent-Cleo"""
+    try:
+        include_completed = request.args.get('include_completed', 'false').lower() == 'true'
+
+        integration = TodoistIntegration()
+        tasks = integration.get_agent_cleo_tasks(include_completed=include_completed)
+
+        return jsonify({
+            'success': True,
+            'tasks': tasks,
+            'count': len(tasks),
+            'message': f'Found {len(tasks)} Agent-Cleo tasks'
+        })
+
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e),
+            'message': f'Failed to fetch Agent-Cleo tasks: {str(e)}'
+        }), 500
+
+
+@app.route('/api/todoist/task/<task_id>', methods=['PUT'])
+def update_todoist_task(task_id):
+    """Update a Todoist task"""
+    data = request.json
+
+    try:
+        integration = TodoistIntegration()
+
+        # Extract update fields
+        update_fields = {}
+        if 'content' in data:
+            update_fields['content'] = data['content']
+        if 'description' in data:
+            update_fields['description'] = data['description']
+        if 'due' in data:
+            update_fields['due_string'] = data['due']
+        if 'priority' in data:
+            update_fields['priority'] = data['priority']
+        if 'labels' in data:
+            update_fields['labels'] = data['labels']
+
+        result = integration.update_task(task_id, **update_fields)
+
+        if result['success']:
+            return jsonify(result), 200
+        else:
+            return jsonify(result), 400
+
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e),
+            'message': f'Failed to update task: {str(e)}'
+        }), 500
+
+
+@app.route('/api/todoist/task/<task_id>/complete', methods=['POST'])
+def complete_todoist_task(task_id):
+    """Mark a Todoist task as complete"""
+    try:
+        integration = TodoistIntegration()
+        result = integration.close_task(task_id)
+
+        if result['success']:
+            return jsonify(result), 200
+        else:
+            return jsonify(result), 400
+
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e),
+            'message': f'Failed to complete task: {str(e)}'
+        }), 500
+
+
 # ============================================================================
 # JOB SCHEDULING
 # ============================================================================

@@ -10,8 +10,8 @@ A comprehensive multi-agent orchestration system featuring a four-tier architect
 
 ### Core Capabilities
 - **Four-Tier Agent Architecture** - Hierarchical orchestration system
-- **26 Specialized Agents** - Personal, Team, Worker, and Expert agents
-- **Todoist Integration** - Agents can create tasks directly in your Todoist workspace
+- **28 Specialized Agents** - Personal, Team, Worker, and Expert agents
+- **Bidirectional Todoist Integration** - Create and read tasks with automatic date conversion
 - **Flask Web Dashboard** - Job management and activity monitoring
 - **Context Management** - Each agent maintains its own context and output folders
 - **Automated Scheduling** - Daily, weekly, monthly, and custom job schedules
@@ -19,9 +19,9 @@ A comprehensive multi-agent orchestration system featuring a four-tier architect
 ### Agent Types
 - **Master Orchestration**: Agent-Cleo (strategic direction)
 - **Personal Agents**: Coach-Cleo, HealthFit-Agent
-- **Team Agents**: DecideWright-MD, S55-MD, SparkwireMedia-MD, ThinTanks-MD, Ascendore-MD
+- **Team Agents**: DecideWright-MD, S55-MD, SparkwireMedia-MD, ThinTanks-MD, Ascendore-MD, Boxzero-MD
 - **Worker Agents**: 9 specialized execution agents (EA, Legal, CMO, CC, CCO, CPO, FD, CSO, SysAdmin)
-- **Expert Agents**: 10 subject matter experts (RegTech, DataScience, CyberSecurity, ESG, AI-Ethics, FinancialModeling, Copywriter, Designer, TechnicalWriter, StrategyRisk)
+- **Expert Agents**: 11 subject matter experts (RegTech, DataScience, CyberSecurity, ESG, AI-Ethics, FinancialModeling, MarketingStrategist, Copywriter, Designer, TechnicalWriter, StrategyRisk)
 
 ---
 
@@ -51,7 +51,8 @@ Agent-Cleo/
 │   ├── S55-MD/
 │   ├── SparkwireMedia-MD/
 │   ├── ThinTanks-MD/
-│   └── Ascendore-MD/
+│   ├── Ascendore-MD/
+│   └── Boxzero-MD/
 │       ├── Context/
 │       ├── Output/
 │       └── Prompt-Manifest.md
@@ -77,6 +78,7 @@ Agent-Cleo/
 │   ├── Expert-ESG/                     # Environmental, Social, Governance
 │   ├── Expert-AI-Ethics/               # AI Ethics
 │   ├── Expert-FinancialModeling/       # Financial Modeling
+│   ├── Expert-MarketingStrategist/     # Marketing Strategy & Positioning
 │   ├── Expert-Copywriter/              # Copywriting
 │   ├── Expert-Designer/                # Design & UX
 │   ├── Expert-TechnicalWriter/         # Technical Writing
@@ -213,8 +215,19 @@ Recommended project structure in Todoist:
 ## 🔧 API Endpoints
 
 ### Todoist Integration
+**Task Creation:**
 - `POST /api/todoist/task` - Create single task
 - `POST /api/todoist/tasks/batch` - Create multiple tasks
+
+**Task Reading:**
+- `GET /api/todoist/tasks` - Get tasks (optional: ?label=Agent-Cleo)
+- `GET /api/todoist/tasks/agent-cleo` - Get all Agent-Cleo labeled tasks
+
+**Task Management:**
+- `PUT /api/todoist/task/<id>` - Update a task
+- `POST /api/todoist/task/<id>/complete` - Mark task as complete
+
+**Projects & Testing:**
 - `GET /api/todoist/projects` - List all projects
 - `GET /api/todoist/test` - Test integration health
 
@@ -256,6 +269,7 @@ Recommended project structure in Todoist:
 - SparkwireMedia-MD - Media and content business
 - ThinTanks-MD - Thought leadership and research
 - Ascendore-MD - General business unit management
+- Boxzero-MD - Strategic business initiative management
 
 ### Tier 3: Worker Agents
 Task execution specialists:
@@ -277,6 +291,7 @@ Subject matter experts (consultative, not executors):
 - Expert-ESG - Environmental, Social, Governance
 - Expert-AI-Ethics - AI Ethics
 - Expert-FinancialModeling - Financial Modeling
+- Expert-MarketingStrategist - Marketing Strategy & Positioning
 - Expert-Copywriter - Copywriting
 - Expert-Designer - Design & UX
 - Expert-TechnicalWriter - Technical Writing

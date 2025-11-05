@@ -12,8 +12,10 @@ Agent-Cleo - This is the main orchestration agent that orchestrates the work of 
   - Studio55London-MD
     - Apportal-MD
     - Trisingularity-MD
-  - NoFatSmoker-MD
-  - Seventy2Capital-MD
+  - SparkwireMedia-MD
+  - ThinTanks-MD
+  - Ascendore-MD
+  - Boxzero-MD
 - Worker Agents
   - Agent-EA - Executive Assistant Agent
   - Agent-Legal - Legal expert/advisor/contract writer and reviewer
@@ -31,6 +33,7 @@ Agent-Cleo - This is the main orchestration agent that orchestrates the work of 
   - Expert-ESG - Environmental, Social, and Governance expert
   - Expert-AI-Ethics - AI ethics and responsible AI expert
   - Expert-FinancialModeling - Financial modeling and valuation expert
+  - Expert-MarketingStrategist - Marketing strategy, positioning, and go-to-market expert
   - Expert-Copywriter - Copywriting and persuasive writing expert
   - Expert-Designer - Design and user experience expert
   - Expert-TechnicalWriter - Technical writing and documentation expert
@@ -70,6 +73,7 @@ Tasks should be organized by business unit:
 - **SparkwireMedia** - SparkwireMedia, NoFatSmoker
 - **ThinTanks** - ThinTanks research and advisory
 - **Ascendore** - General business and strategic tasks
+- **Boxzero** - Boxzero initiatives and projects
 - **Personal** - Personal development, health, fitness
 
 ### Priority Guidelines

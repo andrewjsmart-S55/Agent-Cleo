@@ -8,6 +8,89 @@ from typing import Optional, List, Dict
 from todoist_api_python.api import TodoistAPI
 from todoist_api_python.models import Task, Project
 import json
+import re
+
+
+def convert_relative_to_absolute_date(date_string: str) -> str:
+    """
+    Convert relative date strings to absolute dates (YYYY-MM-DD format)
+
+    Args:
+        date_string: Relative date like "today", "tomorrow", "next Monday", etc.
+
+    Returns:
+        Absolute date string in YYYY-MM-DD format, or original string if already absolute
+    """
+    if not date_string:
+        return None
+
+    date_string_lower = date_string.lower().strip()
+    now = datetime.now()
+
+    # Already an absolute date (contains year or is in YYYY-MM-DD format)
+    if re.match(r'\d{4}-\d{2}-\d{2}', date_string) or '202' in date_string:
+        return date_string
+
+    # Handle "today"
+    if date_string_lower == "today":
+        return now.strftime("%Y-%m-%d")
+
+    # Handle "tomorrow"
+    if date_string_lower == "tomorrow":
+        return (now + timedelta(days=1)).strftime("%Y-%m-%d")
+
+    # Handle "yesterday" (edge case)
+    if date_string_lower == "yesterday":
+        return (now - timedelta(days=1)).strftime("%Y-%m-%d")
+
+    # Handle "in X days"
+    match = re.match(r'in (\d+) days?', date_string_lower)
+    if match:
+        days = int(match.group(1))
+        return (now + timedelta(days=days)).strftime("%Y-%m-%d")
+
+    # Handle weekday names (Monday, Tuesday, etc.)
+    weekdays = {
+        'monday': 0, 'mon': 0,
+        'tuesday': 1, 'tue': 1, 'tues': 1,
+        'wednesday': 2, 'wed': 2,
+        'thursday': 3, 'thu': 3, 'thur': 3, 'thurs': 3,
+        'friday': 4, 'fri': 4,
+        'saturday': 5, 'sat': 5,
+        'sunday': 6, 'sun': 6
+    }
+
+    # Handle "next Monday", "this Friday", etc.
+    for day_name, day_num in weekdays.items():
+        if day_name in date_string_lower:
+            current_weekday = now.weekday()
+            days_ahead = day_num - current_weekday
+
+            # If "next" is explicitly mentioned, always go to next week
+            if "next" in date_string_lower and days_ahead >= 0:
+                days_ahead += 7
+            # If "this" or just the day name, go to next occurrence
+            elif days_ahead <= 0:
+                days_ahead += 7
+
+            target_date = now + timedelta(days=days_ahead)
+            return target_date.strftime("%Y-%m-%d")
+
+    # Handle "next week" - return next Monday
+    if "next week" in date_string_lower:
+        days_ahead = 7 - now.weekday()
+        return (now + timedelta(days=days_ahead)).strftime("%Y-%m-%d")
+
+    # Handle "this week" - return this Friday
+    if "this week" in date_string_lower:
+        days_ahead = 4 - now.weekday()  # Friday
+        if days_ahead < 0:
+            days_ahead += 7
+        return (now + timedelta(days=days_ahead)).strftime("%Y-%m-%d")
+
+    # If we can't parse it, return the original string
+    # Todoist might be able to handle it
+    return date_string
 
 
 class TodoistIntegration:
@@ -123,10 +206,13 @@ class TodoistIntegration:
                 timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
                 full_description = f"**Created by {agent_name}** at {timestamp}\n\n{description}"
 
-            # Ensure Agent-Cleo label is always included
+            # Ensure Agent-Cleo label is included (unless it's a goal with Agent-Cleo-Goals)
             task_labels = labels or []
-            if "Agent-Cleo" not in task_labels:
+            if "Agent-Cleo" not in task_labels and "Agent-Cleo-Goals" not in task_labels:
                 task_labels = task_labels + ["Agent-Cleo"]
+
+            # Convert relative dates to absolute dates
+            absolute_due_date = convert_relative_to_absolute_date(due_string) if due_string else None
 
             # Create the task
             task = self.api.add_task(
@@ -134,7 +220,7 @@ class TodoistIntegration:
                 description=full_description,
                 project_id=project_id,
                 priority=priority,
-                due_string=due_string,
+                due_string=absolute_due_date,
                 labels=task_labels
             )
 
@@ -254,6 +340,121 @@ class TodoistIntegration:
             for p in projects
         ]
 
+    def get_tasks(self, label: str = None, project_id: str = None) -> List[Dict]:
+        """
+        Get tasks, optionally filtered by label or project
+
+        Args:
+            label: Filter by label name (e.g., "Agent-Cleo")
+            project_id: Filter by project ID
+
+        Returns:
+            List of task dictionaries
+        """
+        try:
+            # Get all active tasks - API v3 returns a ResultsPaginator
+            tasks_paginator = self.api.get_tasks(label=label, project_id=project_id)
+
+            # Convert paginator to list of tasks
+            # The paginator yields pages (lists of tasks), so we need to flatten
+            all_tasks = []
+            for page in tasks_paginator:
+                all_tasks.extend(page)
+
+            return [
+                {
+                    'id': task.id,
+                    'content': task.content,
+                    'description': task.description,
+                    'project_id': task.project_id,
+                    'labels': task.labels,
+                    'priority': task.priority,
+                    'due': task.due.date if task.due else None,
+                    'url': task.url,
+                    'created_at': task.created_at,
+                    'is_completed': task.is_completed
+                }
+                for task in all_tasks
+            ]
+        except Exception as e:
+            print(f"Error fetching tasks: {e}")
+            import traceback
+            traceback.print_exc()
+            return []
+
+    def get_agent_cleo_tasks(self, include_completed: bool = False) -> List[Dict]:
+        """
+        Get all tasks labeled with "Agent-Cleo"
+
+        Args:
+            include_completed: Whether to include completed tasks
+
+        Returns:
+            List of task dictionaries
+        """
+        tasks = self.get_tasks(label="Agent-Cleo")
+
+        if not include_completed:
+            tasks = [t for t in tasks if not t['is_completed']]
+
+        return tasks
+
+    def update_task(self, task_id: str, **kwargs) -> Dict:
+        """
+        Update a task
+
+        Args:
+            task_id: Todoist task ID
+            **kwargs: Fields to update (content, description, due_string, priority, labels)
+
+        Returns:
+            Result dictionary
+        """
+        try:
+            # Convert relative dates to absolute if due_string is provided
+            if 'due_string' in kwargs and kwargs['due_string']:
+                kwargs['due_string'] = convert_relative_to_absolute_date(kwargs['due_string'])
+
+            task = self.api.update_task(task_id=task_id, **kwargs)
+
+            return {
+                'success': True,
+                'task_id': task.id,
+                'content': task.content,
+                'message': 'Task updated successfully'
+            }
+        except Exception as e:
+            return {
+                'success': False,
+                'error': str(e),
+                'message': f'Failed to update task: {str(e)}'
+            }
+
+    def close_task(self, task_id: str) -> Dict:
+        """
+        Mark a task as complete
+
+        Args:
+            task_id: Todoist task ID
+
+        Returns:
+            Result dictionary
+        """
+        try:
+            self.api.close_task(task_id=task_id)
+
+            return {
+                'success': True,
+                'task_id': task_id,
+                'message': 'Task completed successfully'
+            }
+        except Exception as e:
+            return {
+                'success': False,
+                'error': str(e),
+                'message': f'Failed to complete task: {str(e)}'
+            }
+
 
 # Convenience functions for agents to use
 def create_task_for_andrew(
@@ -325,6 +526,42 @@ def get_available_projects() -> List[str]:
         return [p['name'] for p in projects]
     except Exception as e:
         print(f"Error fetching projects: {e}")
+        return []
+
+
+def get_agent_tasks(include_completed: bool = False) -> List[Dict]:
+    """
+    Get all tasks labeled with "Agent-Cleo"
+
+    Args:
+        include_completed: Whether to include completed tasks
+
+    Returns:
+        List of task dictionaries
+    """
+    try:
+        integration = TodoistIntegration()
+        return integration.get_agent_cleo_tasks(include_completed=include_completed)
+    except Exception as e:
+        print(f"Error fetching Agent-Cleo tasks: {e}")
+        return []
+
+
+def get_tasks_by_label(label: str) -> List[Dict]:
+    """
+    Get tasks by label
+
+    Args:
+        label: Label name to filter by
+
+    Returns:
+        List of task dictionaries
+    """
+    try:
+        integration = TodoistIntegration()
+        return integration.get_tasks(label=label)
+    except Exception as e:
+        print(f"Error fetching tasks by label: {e}")
         return []
 
 
@@ -447,13 +684,13 @@ if __name__ == "__main__":
         )
 
         if result['success']:
-            print(f"✓ Task created successfully!")
+            print(f"[SUCCESS] Task created successfully!")
             print(f"  - Content: {result['content']}")
             print(f"  - Project: {result['project']}")
             print(f"  - URL: {result['url']}")
         else:
-            print(f"✗ Failed to create task: {result['error']}")
+            print(f"[ERROR] Failed to create task: {result['error']}")
 
     except Exception as e:
-        print(f"\n✗ Integration test failed: {e}")
+        print(f"\n[ERROR] Integration test failed: {e}")
         print("\nMake sure to set TODOIST_API_TOKEN environment variable")

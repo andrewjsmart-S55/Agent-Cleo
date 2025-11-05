@@ -108,17 +108,19 @@ class AgentHandler:
         except Exception as e:
             return f"Error fetching tasks: {str(e)}"
 
-    def create_todoist_task(self, task_details: str) -> Dict:
+    def create_todoist_task(self, task_details: str, project: str = "Personal", priority: int = 2, due: str = None) -> Dict:
         """Create a task in Todoist"""
         # Parse task details (simple version - can be enhanced)
         lines = task_details.split('\n')
         title = lines[0] if lines else task_details
+        description = '\n'.join(lines[1:]) if len(lines) > 1 else ""
 
         return create_task_for_andrew(
             content=title,
-            description=task_details,
-            project='WORK',
-            priority=2,
+            description=description if description else task_details,
+            project=project,
+            priority=priority,
+            due=due,
             agent='Telegram-Bot'
         )
 
@@ -174,21 +176,104 @@ Current context: This is a Telegram conversation. Andrew can ask you questions, 
             # Add current message to history
             self.add_to_history(user_id, "user", message)
 
-            # Call Claude API
+            # Define tools for Claude to use
+            tools = [
+                {
+                    "name": "create_todoist_task",
+                    "description": "Create a task in Andrew's Todoist task manager. Use this when Andrew asks you to create a task, add a task, or remember something for later. You can specify the task content, project, priority, and due date.",
+                    "input_schema": {
+                        "type": "object",
+                        "properties": {
+                            "task_details": {
+                                "type": "string",
+                                "description": "The task title or description. Be clear and actionable."
+                            },
+                            "project": {
+                                "type": "string",
+                                "description": "The Todoist project name. Options: Personal, DecideWright, Studio55, SparkwireMedia, ThinTanks, Ascendore, Boxzero. Default is Personal.",
+                                "enum": ["Personal", "DecideWright", "Studio55", "SparkwireMedia", "ThinTanks", "Ascendore", "Boxzero"]
+                            },
+                            "priority": {
+                                "type": "integer",
+                                "description": "Task priority: 1=normal, 2=medium, 3=high, 4=urgent. Default is 2.",
+                                "enum": [1, 2, 3, 4]
+                            },
+                            "due": {
+                                "type": "string",
+                                "description": "Due date in natural language like 'today', 'tomorrow', 'Friday', 'next Monday', or a specific date. Leave empty if no due date."
+                            }
+                        },
+                        "required": ["task_details"]
+                    }
+                }
+            ]
+
+            # Call Claude API with tools
             response = self.client.messages.create(
                 model=config.CLAUDE_MODEL,
                 max_tokens=config.MAX_TOKENS,
                 system=system_prompt,
-                messages=history
+                messages=history,
+                tools=tools
             )
 
-            # Extract response text
-            response_text = response.content[0].text
+            # Process response and handle tool calls
+            response_text = ""
+            tool_results = []
 
-            # Add response to history
-            self.add_to_history(user_id, "assistant", response_text)
+            for content_block in response.content:
+                if content_block.type == "text":
+                    response_text += content_block.text
+                elif content_block.type == "tool_use":
+                    # Claude wants to use a tool
+                    tool_name = content_block.name
+                    tool_input = content_block.input
+                    tool_use_id = content_block.id
 
-            return response_text
+                    if tool_name == "create_todoist_task":
+                        # Create the task
+                        result = self.create_todoist_task(
+                            task_details=tool_input.get("task_details"),
+                            project=tool_input.get("project", "Personal"),
+                            priority=tool_input.get("priority", 2),
+                            due=tool_input.get("due")
+                        )
+
+                        # Store result for follow-up
+                        tool_results.append({
+                            "type": "tool_result",
+                            "tool_use_id": tool_use_id,
+                            "content": str(result)
+                        })
+
+            # If there were tool calls, get Claude's follow-up response
+            if tool_results:
+                # Add assistant's tool use to history
+                self.add_to_history(user_id, "assistant", str(response.content))
+
+                # Add tool results to history
+                for tool_result in tool_results:
+                    history.append(tool_result)
+
+                # Get final response from Claude
+                follow_up_response = self.client.messages.create(
+                    model=config.CLAUDE_MODEL,
+                    max_tokens=config.MAX_TOKENS,
+                    system=system_prompt,
+                    messages=history,
+                    tools=tools
+                )
+
+                # Extract final response text
+                for content_block in follow_up_response.content:
+                    if content_block.type == "text":
+                        response_text += content_block.text
+
+            # Add final response to history
+            if response_text:
+                self.add_to_history(user_id, "assistant", response_text)
+
+            return response_text if response_text else "Task created successfully!"
 
         except Exception as e:
             error_msg = f"Error processing message: {str(e)}"
