@@ -8,6 +8,10 @@ Connect with your Agent-Cleo coaching and productivity system via Telegram for o
 
 ✅ **Multi-Agent Support** - Automatic routing to Coach-Cleo, DecideWright-MD, and all 26 agents
 ✅ **Todoist Integration** - Create tasks directly from Telegram
+✅ **Action Approval System** - Approve or reject agent actions with inline buttons
+✅ **Goal Management** - Full integration with Coach-Cleo's Goal Management Framework
+✅ **Workflow Triggers** - Trigger weekly planning, goal reviews, and agent workflows
+✅ **Proactive Notifications** - Receive updates, reminders, and alerts from agents
 ✅ **Conversation Memory** - Context-aware conversations
 ✅ **Natural Language** - Just message naturally, no complex commands
 ✅ **Rich Responses** - Formatted text with markdown support
@@ -112,14 +116,37 @@ Press Ctrl+C to stop.
 
 ## Available Commands
 
+### Basic Commands
 | Command | Description | Example |
 |---------|-------------|---------|
 | `/start` | Welcome message and overview | `/start` |
 | `/help` | Show help and commands | `/help` |
 | `/agents` | List all available agents | `/agents` |
-| `/task [description]` | Create Todoist task | `/task Complete QRA Playbook` |
-| `/coach [message]` | Talk to Coach-Cleo | `/coach Review today's tasks` |
 | `/reset` | Clear conversation history | `/reset` |
+
+### Goal Management
+| Command | Description | Example |
+|---------|-------------|---------|
+| `/goals [type]` | View goals (weekly, short, long, stats, all) | `/goals weekly` |
+| `/focus` | Get your #1 priority for today | `/focus` |
+| `/weekly_planning` | Start weekly planning with Coach-Cleo | `/weekly_planning` |
+| `/goal_review [type]` | Review goals (daily, weekly, monthly) | `/goal_review daily` |
+| `/briefing` | Get your daily briefing | `/briefing` |
+
+### Actions & Approvals
+| Command | Description | Example |
+|---------|-------------|---------|
+| `/pending` | View pending approvals | `/pending` |
+| `/history` | View action history | `/history` |
+| `/task [description]` | Create Todoist task | `/task Complete QRA Playbook` |
+
+### Agent Workflows
+| Command | Description | Example |
+|---------|-------------|---------|
+| `/coach [message]` | Talk to Coach-Cleo | `/coach What should I focus on?` |
+| `/agent_run <agent> <workflow>` | Trigger agent workflow | `/agent_run DecideWright-MD analyze` |
+
+**📖 For detailed documentation, see [TELEGRAM_BOT_GUIDE.md](TELEGRAM_BOT_GUIDE.md)**
 
 ---
 
@@ -302,32 +329,51 @@ Edit `config.py` → `AGENT_KEYWORDS` dictionary to add/modify routing keywords.
 
 ```
 Telegram Bot/
-├── bot.py                 # Main bot application
-├── agent_handler.py       # Agent routing and Claude integration
-├── config.py             # Configuration management
-├── requirements.txt      # Python dependencies
-├── .env.example          # Environment template
-├── .env                  # Your credentials (not in Git)
-└── README.md            # This file
+├── bot.py                      # Main bot application
+├── agent_handler.py            # Agent routing and Claude integration
+├── action_manager.py           # Action approval workflow
+├── notification_service.py     # Proactive notifications
+├── workflow_triggers.py        # Agent workflow execution
+├── goal_commands.py            # Goal management interface
+├── config.py                   # Configuration management
+├── requirements.txt            # Python dependencies
+├── .env.example                # Environment template
+├── .env                        # Your credentials (not in Git)
+├── README.md                   # Quick start guide
+├── TELEGRAM_BOT_GUIDE.md       # Complete feature documentation
+└── data/                       # Data storage (created automatically)
+    ├── pending_actions.json    # Actions awaiting approval
+    ├── action_history.json     # Historical actions
+    ├── notifications.json      # Notification queue
+    └── output_watchers.json    # Agent output monitoring
 ```
 
 ---
 
 ## What's Next?
 
-### Phase 1 (Current) ✅
+### Phase 1 ✅ Complete
 - [x] Basic message handling
 - [x] Agent routing
 - [x] Todoist integration
 - [x] Coach-Cleo support
 
-### Phase 2 (Future)
-- [ ] Inline buttons for quick actions
-- [ ] Daily automated check-ins (morning/evening)
+### Phase 2 ✅ Complete
+- [x] Inline buttons for action approvals
+- [x] Goal Management Framework integration
+- [x] Weekly planning workflows
+- [x] Daily briefing and goal reviews
+- [x] Agent workflow triggers
+- [x] Proactive notifications
+
+### Phase 3 (Future)
+- [ ] Scheduled daily check-ins (automated)
 - [ ] Voice message support
-- [ ] File/document uploads
-- [ ] Weekly summary reports
+- [ ] File/document uploads and processing
+- [ ] Visual goal progress charts
 - [ ] Calendar integration
+- [ ] Multi-user/team support
+- [ ] Agent Output monitoring (automatic notifications)
 
 ---
 
@@ -345,9 +391,16 @@ Add to Agent-Cleo project roadmap!
 
 ## Version
 
-**Current Version:** 1.0.0
-**Created:** November 4, 2025
+**Current Version:** 2.0.0
+**Last Updated:** November 9, 2025
 **Agent-Cleo Version:** 1.0.0
+
+**Version 2.0 Features:**
+- ✅ Action Approval System with inline buttons
+- ✅ Full Goal Management integration
+- ✅ Workflow Triggers (weekly planning, goal reviews, briefing)
+- ✅ Proactive Notifications
+- ✅ Enhanced agent tools (request_approval, send_notification, schedule_reminder)
 
 ---
 

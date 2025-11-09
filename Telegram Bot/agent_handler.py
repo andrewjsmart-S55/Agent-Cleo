@@ -16,10 +16,12 @@ from todoist_integration import create_task_for_andrew
 class AgentHandler:
     """Handles agent routing and Claude API integration"""
 
-    def __init__(self):
+    def __init__(self, action_manager=None, notification_service=None):
         self.client = Anthropic(api_key=config.ANTHROPIC_API_KEY)
         self.agent_prompts = {}
         self.conversation_history = {}
+        self.action_manager = action_manager
+        self.notification_service = notification_service
 
     def load_agent_prompt(self, agent_name: str) -> Optional[str]:
         """Load agent prompt manifest from file"""
@@ -205,6 +207,78 @@ Current context: This is a Telegram conversation. Andrew can ask you questions, 
                         },
                         "required": ["task_details"]
                     }
+                },
+                {
+                    "name": "request_approval",
+                    "description": "Request approval from Andrew before taking an action. Use this for important decisions, significant tasks, or anything that should be reviewed before execution. Andrew will receive a notification and can approve, reject, or modify the request.",
+                    "input_schema": {
+                        "type": "object",
+                        "properties": {
+                            "action_type": {
+                                "type": "string",
+                                "description": "Type of action requiring approval (e.g., 'create_task', 'send_email', 'schedule_meeting', 'make_decision')"
+                            },
+                            "description": {
+                                "type": "string",
+                                "description": "Clear description of what you want to do and why"
+                            },
+                            "action_data": {
+                                "type": "object",
+                                "description": "Data needed to execute the action if approved"
+                            },
+                            "context": {
+                                "type": "string",
+                                "description": "Additional context to help Andrew make the decision"
+                            }
+                        },
+                        "required": ["action_type", "description", "action_data"]
+                    }
+                },
+                {
+                    "name": "send_notification",
+                    "description": "Send a proactive notification to Andrew. Use this to provide updates, reminders, or important information that Andrew should be aware of.",
+                    "input_schema": {
+                        "type": "object",
+                        "properties": {
+                            "title": {
+                                "type": "string",
+                                "description": "Notification title"
+                            },
+                            "message": {
+                                "type": "string",
+                                "description": "Notification message"
+                            },
+                            "notification_type": {
+                                "type": "string",
+                                "description": "Type of notification",
+                                "enum": ["info", "warning", "success", "action_required"]
+                            },
+                            "priority": {
+                                "type": "integer",
+                                "description": "Priority level (1=high, 2=normal, 3=low)",
+                                "enum": [1, 2, 3]
+                            }
+                        },
+                        "required": ["title", "message"]
+                    }
+                },
+                {
+                    "name": "schedule_reminder",
+                    "description": "Schedule a reminder for Andrew at a specific time in the future.",
+                    "input_schema": {
+                        "type": "object",
+                        "properties": {
+                            "reminder_text": {
+                                "type": "string",
+                                "description": "The reminder message"
+                            },
+                            "when": {
+                                "type": "string",
+                                "description": "When to send the reminder (e.g., 'in 1 hour', 'tomorrow at 9am', '2025-11-10 14:00')"
+                            }
+                        },
+                        "required": ["reminder_text", "when"]
+                    }
                 }
             ]
 
@@ -240,6 +314,95 @@ Current context: This is a Telegram conversation. Andrew can ask you questions, 
                         )
 
                         # Store result for follow-up
+                        tool_results.append({
+                            "type": "tool_result",
+                            "tool_use_id": tool_use_id,
+                            "content": str(result)
+                        })
+
+                    elif tool_name == "request_approval" and self.action_manager:
+                        # Create approval request
+                        action_id = self.action_manager.create_action(
+                            user_id=user_id,
+                            agent_name=agent_name,
+                            action_type=tool_input.get("action_type"),
+                            description=tool_input.get("description"),
+                            action_data=tool_input.get("action_data", {}),
+                            context=tool_input.get("context", "")
+                        )
+
+                        result = {
+                            "success": True,
+                            "action_id": action_id,
+                            "status": "pending_approval",
+                            "message": "Approval request created. User will be notified."
+                        }
+
+                        tool_results.append({
+                            "type": "tool_result",
+                            "tool_use_id": tool_use_id,
+                            "content": str(result)
+                        })
+
+                    elif tool_name == "send_notification" and self.notification_service:
+                        # Create notification
+                        notification_id = self.notification_service.create_notification(
+                            user_id=user_id,
+                            title=tool_input.get("title"),
+                            message=tool_input.get("message"),
+                            notification_type=tool_input.get("notification_type", "info"),
+                            agent_name=agent_name,
+                            priority=tool_input.get("priority", 2)
+                        )
+
+                        result = {
+                            "success": True,
+                            "notification_id": notification_id,
+                            "message": "Notification queued for delivery"
+                        }
+
+                        tool_results.append({
+                            "type": "tool_result",
+                            "tool_use_id": tool_use_id,
+                            "content": str(result)
+                        })
+
+                    elif tool_name == "schedule_reminder" and self.notification_service:
+                        # Parse when and schedule reminder
+                        from datetime import datetime, timedelta
+                        import re
+
+                        when_text = tool_input.get("when", "")
+                        scheduled_for = None
+
+                        # Simple parsing (can be enhanced)
+                        if "hour" in when_text:
+                            match = re.search(r'(\d+)\s*hour', when_text)
+                            if match:
+                                hours = int(match.group(1))
+                                scheduled_for = datetime.now() + timedelta(hours=hours)
+                        elif "tomorrow" in when_text:
+                            scheduled_for = datetime.now() + timedelta(days=1)
+
+                        if scheduled_for:
+                            notification_id = self.notification_service.schedule_reminder(
+                                user_id=user_id,
+                                reminder_text=tool_input.get("reminder_text"),
+                                scheduled_for=scheduled_for,
+                                agent_name=agent_name
+                            )
+
+                            result = {
+                                "success": True,
+                                "notification_id": notification_id,
+                                "scheduled_for": scheduled_for.isoformat()
+                            }
+                        else:
+                            result = {
+                                "success": False,
+                                "error": "Could not parse when time"
+                            }
+
                         tool_results.append({
                             "type": "tool_result",
                             "tool_use_id": tool_use_id,
