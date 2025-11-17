@@ -46,9 +46,16 @@ except ImportError:
 # APPLICATION LIFECYCLE
 # ============================================================================
 
+# Global cache for discovered agents
+_agents_cache = None
+_agents_cache_timestamp = None
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Lifespan context manager for startup and shutdown"""
+    global _agents_cache, _agents_cache_timestamp
+
     # Startup
     print("=" * 70)
     print("Agent-Cleo v2.0 - Professional AI Agent Orchestration")
@@ -58,6 +65,20 @@ async def lifespan(app: FastAPI):
     print(f"Database initialized: {settings.database_url}")
     print(f"Overlord API: {settings.overlord_api_url}")
     print(f"Base Path: {settings.base_path}")
+
+    # Discover agents at startup
+    print(f"Discovering agents from filesystem...")
+    from src.agent_utils import discover_agents
+    try:
+        _agents_cache = discover_agents(settings.base_path)
+        _agents_cache_timestamp = datetime.utcnow()
+        print(f"✓ Discovered {len(_agents_cache)} agents")
+        for agent in _agents_cache:
+            print(f"  - [{agent['tier']}] {agent['name']}")
+    except Exception as e:
+        print(f"⚠ Warning: Failed to discover agents: {e}")
+        _agents_cache = []
+
     print("=" * 70)
 
     yield
@@ -179,11 +200,18 @@ async def update_agent(
 
 @app.post("/api/agents/initialize")
 async def initialize_agents(db: Session = Depends(get_db)):
-    """Discover and initialize all agents from filesystem"""
-    from src.agent_utils import discover_agents
+    """Initialize all agents from cached discovery (fast - uses startup cache)"""
+    global _agents_cache, _agents_cache_timestamp
 
     try:
-        agents_data = discover_agents(settings.base_path)
+        # Use cached agents data from startup
+        if _agents_cache is None:
+            raise HTTPException(
+                status_code=503,
+                detail="Agent cache not initialized. Server may still be starting up."
+            )
+
+        agents_data = _agents_cache
         created_count = 0
         updated_count = 0
 
@@ -218,12 +246,46 @@ async def initialize_agents(db: Session = Depends(get_db)):
             "success": True,
             "message": f"Initialized {len(agents_data)} agents",
             "created": created_count,
-            "updated": updated_count
+            "updated": updated_count,
+            "cache_age": str(datetime.utcnow() - _agents_cache_timestamp) if _agents_cache_timestamp else "unknown"
         }
 
+    except HTTPException:
+        raise
     except Exception as e:
         db.rollback()
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/api/agents/refresh-cache")
+async def refresh_agent_cache():
+    """
+    Admin endpoint: Refresh the agent discovery cache by re-scanning the filesystem.
+    Use this when agents are added/removed/modified on disk.
+    """
+    global _agents_cache, _agents_cache_timestamp
+
+    from src.agent_utils import discover_agents
+
+    try:
+        print("Manually refreshing agent cache...")
+        old_count = len(_agents_cache) if _agents_cache else 0
+
+        _agents_cache = discover_agents(settings.base_path)
+        _agents_cache_timestamp = datetime.utcnow()
+
+        print(f"✓ Cache refreshed: {len(_agents_cache)} agents discovered")
+
+        return {
+            "success": True,
+            "message": "Agent cache refreshed",
+            "previous_count": old_count,
+            "current_count": len(_agents_cache),
+            "timestamp": _agents_cache_timestamp.isoformat()
+        }
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to refresh cache: {str(e)}")
 
 
 # ============================================================================
