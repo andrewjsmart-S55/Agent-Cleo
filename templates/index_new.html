@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent-Cleo - AI Agent Orchestration</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="/static/css/themes.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        /* Theme-aware styling using Vibeship theme system */
+        body, html {
+            height: 100vh;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: hsl(var(--background));
+            color: hsl(var(--foreground));
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: 80px;
+            background: linear-gradient(180deg, hsl(var(--primary)) 0%, hsl(var(--primary) / 0.8) 100%);
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+
+        .sidebar-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-icon:hover {
+            background: rgba(255,255,255,0.2);
+            transform: scale(1.05);
+        }
+
+        .sidebar-icon.active {
+            background: hsl(var(--accent));
+            color: hsl(var(--accent-foreground));
+            box-shadow: 0 4px 12px hsl(var(--accent) / 0.4);
+        }
+
+        /* Main Content */
+        .main-content {
+            width: calc(100% - 80px);
+            background-color: hsl(var(--background));
+        }
+
+        /* Cards */
+        .card {
+            background: hsl(var(--card));
+            color: hsl(var(--card-foreground));
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border: 1px solid hsl(var(--border));
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+        }
+
+        /* Agent Cards */
+        .agent-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .agent-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .agent-status {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .status-idle { background-color: #94A3B8; }
+        .status-working { background-color: #10B981; animation: pulse 2s infinite; }
+        .status-waiting { background-color: #F59E0B; }
+        .status-error { background-color: #EF4444; }
+        .status-offline { background-color: #6B7280; }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Tier Badges */
+        .tier-badge {
+            font-size: 0.75rem;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        .tier-master { background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%); color: white; }
+        .tier-personal { background: linear-gradient(135deg, #06B6D4 0%, #0891B2 100%); color: white; }
+        .tier-team { background: linear-gradient(135deg, #10B981 0%, #059669 100%); color: white; }
+        .tier-worker { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); color: white; }
+        .tier-expert { background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%); color: white; }
+
+        /* Chat Interface */
+        .chat-container {
+            height: calc(100vh - 200px);
+            overflow-y: auto;
+        }
+
+        .chat-message {
+            margin: 16px 0;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message-user {
+            text-align: right;
+        }
+
+        .message-bubble {
+            display: inline-block;
+            padding: 12px 16px;
+            border-radius: 16px;
+            max-width: 70%;
+        }
+
+        .message-user .message-bubble {
+            background: hsl(var(--primary));
+            color: white;
+        }
+
+        .message-agent .message-bubble {
+            background: hsl(var(--card));
+            border: 1px solid hsl(var(--border));
+        }
+
+        /* Visualization Container */
+        .viz-container {
+            background: hsl(var(--card));
+            border-radius: 16px;
+            padding: 24px;
+            height: calc(100vh - 150px);
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: hsl(var(--primary));
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: hsl(var(--secondary));
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(107,124,89,0.3);
+        }
+
+        /* Content Sections */
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: hsl(var(--background));
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: hsl(var(--secondary));
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: hsl(var(--primary));
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            border: 3px solid hsl(var(--border));
+            border-top: 3px solid hsl(var(--primary));
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="flex h-screen">
+    <!-- Left Sidebar -->
+    <div class="sidebar flex flex-col items-center py-6 space-y-4">
+        <!-- Logo -->
+        <div class="sidebar-icon active" style="background: hsl(var(--accent)); margin-bottom: 20px;">
+            <i class="fas fa-brain text-2xl" style="color: white;"></i>
+        </div>
+
+        <!-- Navigation Icons -->
+        <div class="sidebar-icon" onclick="showSection('dashboard')" title="Dashboard">
+            <i class="fas fa-home text-xl"></i>
+        </div>
+
+        <div class="sidebar-icon" onclick="showSection('agents')" title="Agents">
+            <i class="fas fa-users text-xl"></i>
+        </div>
+
+        <div class="sidebar-icon" onclick="showSection('chat')" title="Chat">
+            <i class="fas fa-comments text-xl"></i>
+        </div>
+
+        <div class="sidebar-icon" onclick="showSection('visualizations')" title="Visualizations">
+            <i class="fas fa-project-diagram text-xl"></i>
+        </div>
+
+        <div class="sidebar-icon" onclick="showSection('documents')" title="Documents">
+            <i class="fas fa-file-alt text-xl"></i>
+        </div>
+
+        <div class="sidebar-icon" onclick="showSection('tasks')" title="Tasks">
+            <i class="fas fa-check-circle text-xl"></i>
+        </div>
+
+        <!-- Settings at bottom -->
+        <div style="flex-grow: 1;"></div>
+        <div class="sidebar-icon" onclick="showSection('settings')" title="Settings">
+            <i class="fas fa-cog text-xl"></i>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content overflow-y-auto">
+        <!-- Header -->
+        <div class="bg-white border-b border-gray-200 px-8 py-4 flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-bold" style="color: hsl(var(--primary));">Agent-Cleo</h1>
+                <p class="text-sm" style="color: hsl(var(--muted-foreground));">AI Agent Orchestration Platform</p>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button class="btn-primary" onclick="initializeAgents()">
+                    <i class="fas fa-sync-alt mr-2"></i>Initialize Agents
+                </button>
+                <div class="flex items-center space-x-2">
+                    <div id="system-status" class="agent-status status-idle"></div>
+                    <span id="agent-count" class="text-sm" style="color: hsl(var(--muted-foreground));">0 agents</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Section -->
+        <div id="section-dashboard" class="content-section active p-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <!-- Stats Cards -->
+                <div class="card p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm" style="color: hsl(var(--muted-foreground));">Total Agents</p>
+                            <p id="stat-total-agents" class="text-3xl font-bold" style="color: hsl(var(--primary));">0</p>
+                        </div>
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center" style="background: hsl(var(--accent-light)); border: 2px solid hsl(var(--accent));">
+                            <i class="fas fa-users text-2xl" style="color: hsl(var(--accent));"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm" style="color: hsl(var(--muted-foreground));">Active Agents</p>
+                            <p id="stat-active-agents" class="text-3xl font-bold" style="color: #10B981;">0</p>
+                        </div>
+                        <div class="w-16 h-16 rounded-full flex items-center justify-between" style="background: rgba(16, 185, 129, 0.1); border: 2px solid #10B981;">
+                            <i class="fas fa-check-circle text-2xl" style="color: #10B981; margin: auto;"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm" style="color: hsl(var(--muted-foreground));">Recent Activities</p>
+                            <p id="stat-activities" class="text-3xl font-bold" style="color: hsl(var(--primary));">0</p>
+                        </div>
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center" style="background: hsl(var(--accent-light)); border: 2px solid hsl(var(--primary));">
+                            <i class="fas fa-chart-line text-2xl" style="color: hsl(var(--primary));"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Agent Overview -->
+            <div class="card p-6">
+                <h2 class="text-xl font-bold mb-4" style="color: hsl(var(--primary));">Agent Overview</h2>
+                <div id="dashboard-agents" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="text-center text-gray-400 py-8 col-span-full">
+                        <i class="fas fa-robot text-4xl mb-2"></i>
+                        <p>Click "Initialize Agents" to discover agents</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Agents Section (Grid View) -->
+        <div id="section-agents" class="content-section p-8">
+            <div class="card p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-bold" style="color: hsl(var(--primary));">All Agents</h2>
+                    <div class="flex space-x-2">
+                        <select id="filter-tier" class="px-4 py-2 border rounded-lg" onchange="filterAgents()">
+                            <option value="">All Tiers</option>
+                            <option value="master">Master</option>
+                            <option value="personal">Personal</option>
+                            <option value="team">Team</option>
+                            <option value="worker">Worker</option>
+                            <option value="expert">Expert</option>
+                        </select>
+                        <select id="filter-status" class="px-4 py-2 border rounded-lg" onchange="filterAgents()">
+                            <option value="">All Status</option>
+                            <option value="idle">Idle</option>
+                            <option value="working">Working</option>
+                            <option value="waiting">Waiting</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="agents-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Agents will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Section -->
+        <div id="section-chat" class="content-section p-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full">
+                <!-- Agent Selection -->
+                <div class="card p-6">
+                    <h3 class="text-lg font-bold mb-4" style="color: hsl(var(--primary));">Select Agent</h3>
+                    <div id="chat-agent-list" class="space-y-2">
+                        <!-- Agent list will load here -->
+                    </div>
+                </div>
+
+                <!-- Chat Interface -->
+                <div class="card p-6 lg:col-span-2 flex flex-col">
+                    <div class="flex items-center justify-between mb-4 pb-4 border-b">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background: hsl(var(--accent));">
+                                <i id="chat-agent-icon" class="fas fa-robot" style="color: hsl(var(--primary));"></i>
+                            </div>
+                            <div>
+                                <h3 id="chat-agent-name" class="font-bold" style="color: hsl(var(--primary));">Select an agent</h3>
+                                <p id="chat-agent-tier" class="text-xs" style="color: hsl(var(--muted-foreground));"></p>
+                            </div>
+                        </div>
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" id="chat-use-rag" checked class="rounded">
+                            <span class="text-sm">Use RAG Knowledge</span>
+                        </label>
+                    </div>
+
+                    <div id="chat-messages" class="chat-container flex-grow mb-4">
+                        <div class="text-center text-gray-400 py-8">
+                            <i class="fas fa-comments text-4xl mb-2"></i>
+                            <p>Select an agent to start chatting</p>
+                        </div>
+                    </div>
+
+                    <div class="flex space-x-2">
+                        <input
+                            type="text"
+                            id="chat-input"
+                            placeholder="Type your message..."
+                            class="flex-grow px-4 py-3 border rounded-lg focus:outline-none focus:ring-2"
+                            style="border-color: hsl(var(--border));"
+                            onkeypress="if(event.key==='Enter') sendMessage()"
+                        >
+                        <button class="btn-primary" onclick="sendMessage()">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Visualizations Section -->
+        <div id="section-visualizations" class="content-section p-8">
+            <div class="flex space-x-4 mb-6">
+                <button class="btn-primary" onclick="showVisualization('network')">
+                    <i class="fas fa-project-diagram mr-2"></i>Network Graph
+                </button>
+                <button class="btn-primary" onclick="showVisualization('hierarchy')">
+                    <i class="fas fa-sitemap mr-2"></i>Org Chart
+                </button>
+                <button class="btn-primary" onclick="showVisualization('kanban')">
+                    <i class="fas fa-columns mr-2"></i>Kanban Board
+                </button>
+                <button class="btn-primary" onclick="showVisualization('grid')">
+                    <i class="fas fa-th mr-2"></i>Grid View
+                </button>
+            </div>
+
+            <div id="visualization-container" class="viz-container">
+                <div class="text-center text-gray-400 py-20">
+                    <i class="fas fa-chart-network text-5xl mb-4"></i>
+                    <p>Select a visualization type above</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Documents Section -->
+        <div id="section-documents" class="content-section p-8">
+            <div class="card p-6">
+                <h2 class="text-xl font-bold mb-4" style="color: hsl(var(--primary));">Document Management</h2>
+                <div class="border-2 border-dashed rounded-lg p-12 text-center" style="border-color: hsl(var(--border));">
+                    <i class="fas fa-cloud-upload-alt text-5xl mb-4" style="color: hsl(var(--secondary));"></i>
+                    <p class="text-lg mb-2">Drag and drop files here</p>
+                    <p class="text-sm" style="color: hsl(var(--muted-foreground));">or click to browse</p>
+                    <input type="file" id="file-upload" multiple class="hidden" onchange="uploadDocuments()">
+                    <button class="btn-primary mt-4" onclick="document.getElementById('file-upload').click()">
+                        Choose Files
+                    </button>
+                </div>
+                <div id="documents-list" class="mt-6">
+                    <!-- Documents will be listed here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Tasks Section -->
+        <div id="section-tasks" class="content-section p-8">
+            <div class="card p-6">
+                <h2 class="text-xl font-bold mb-4" style="color: hsl(var(--primary));">Todoist Integration</h2>
+                <p class="mb-4" style="color: hsl(var(--muted-foreground));">Agents can create tasks in your Todoist account</p>
+                <div id="tasks-list">
+                    <!-- Tasks will be listed here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Section -->
+        <div id="section-settings" class="content-section p-8">
+            <div class="card p-6">
+                <h2 class="text-xl font-bold mb-4" style="color: hsl(var(--primary));">Settings</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Overlord API URL</label>
+                        <input type="text" class="w-full px-4 py-2 border rounded-lg" value="http://localhost:3000/api/v1" readonly>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Todoist API Token</label>
+                        <input type="password" class="w-full px-4 py-2 border rounded-lg" placeholder="Enter your Todoist API token">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+        <button id="theme-toggle-btn" class="btn-primary" style="width: 56px; height: 56px; border-radius: 50%; padding: 0; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
+            <i class="fas fa-palette text-xl"></i>
+        </button>
+
+        <div id="theme-panel" style="display: none; position: absolute; bottom: 70px; right: 0; background: hsl(var(--card)); border: 1px solid hsl(var(--border)); border-radius: 16px; padding: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); min-width: 300px;">
+            <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: hsl(var(--foreground));">Choose Theme</h3>
+
+            <!-- Theme Colors -->
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px;">
+                <button class="theme-option" data-theme="purple" style="width: 100%; padding: 12px; border-radius: 8px; border: 2px solid hsl(var(--border)); background: linear-gradient(135deg, #8B5CF6, #EC4899); cursor: pointer; transition: transform 0.2s;">
+                    <span style="display: block; font-size: 12px; color: white; font-weight: 500;">Purple</span>
+                </button>
+                <button class="theme-option" data-theme="cyan" style="width: 100%; padding: 12px; border-radius: 8px; border: 2px solid hsl(var(--border)); background: linear-gradient(135deg, #06B6D4, #14B8A6); cursor: pointer; transition: transform 0.2s;">
+                    <span style="display: block; font-size: 12px; color: white; font-weight: 500;">Cyan</span>
+                </button>
+                <button class="theme-option" data-theme="rose" style="width: 100%; padding: 12px; border-radius: 8px; border: 2px solid hsl(var(--border)); background: linear-gradient(135deg, #F43F5E, #EF4444); cursor: pointer; transition: transform 0.2s;">
+                    <span style="display: block; font-size: 12px; color: white; font-weight: 500;">Rose</span>
+                </button>
+                <button class="theme-option" data-theme="green" style="width: 100%; padding: 12px; border-radius: 8px; border: 2px solid hsl(var(--border)); background: linear-gradient(135deg, #16A34A, #10B981); cursor: pointer; transition: transform 0.2s;">
+                    <span style="display: block; font-size: 12px; color: white; font-weight: 500;">Green</span>
+                </button>
+                <button class="theme-option" data-theme="orange" style="width: 100%; padding: 12px; border-radius: 8px; border: 2px solid hsl(var(--border)); background: linear-gradient(135deg, #F97316, #FBBF24); cursor: pointer; transition: transform 0.2s;">
+                    <span style="display: block; font-size: 12px; color: white; font-weight: 500;">Orange</span>
+                </button>
+                <button class="theme-option" data-theme="blue" style="width: 100%; padding: 12px; border-radius: 8px; border: 2px solid hsl(var(--border)); background: linear-gradient(135deg, #60A5FA, #93C5FD); cursor: pointer; transition: transform 0.2s;">
+                    <span style="display: block; font-size: 12px; color: white; font-weight: 500;">Blue</span>
+                </button>
+            </div>
+
+            <!-- Mode Toggle -->
+            <div style="border-top: 1px solid hsl(var(--border)); padding-top: 16px;">
+                <h4 style="font-size: 14px; font-weight: 500; margin-bottom: 12px; color: hsl(var(--foreground));">Mode</h4>
+                <div style="display: flex; gap: 8px;">
+                    <button class="mode-option" data-mode="light" style="flex: 1; padding: 8px; border-radius: 6px; border: 1px solid hsl(var(--border)); background: hsl(var(--card)); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                        <i class="fas fa-sun"></i>
+                        <span style="font-size: 12px;">Light</span>
+                    </button>
+                    <button class="mode-option" data-mode="dark" style="flex: 1; padding: 8px; border-radius: 6px; border: 1px solid hsl(var(--border)); background: hsl(var(--card)); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                        <i class="fas fa-moon"></i>
+                        <span style="font-size: 12px;">Dark</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

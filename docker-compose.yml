@@ -1,0 +1,82 @@
+version: '3.8'
+
+services:
+  agent-cleo:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: agent-cleo-app
+    ports:
+      - "8000:8000"
+    environment:
+      # Application Settings
+      - APP_NAME=Agent-Cleo
+      - APP_VERSION=2.0.0
+      - ENVIRONMENT=development
+
+      # Database (use PostgreSQL in production)
+      - DATABASE_URL=sqlite:///./data/agents.db
+
+      # Overlord API Integration
+      - OVERLORD_API_URL=https://api.theoverlord.ai/api/v1
+      - OVERLORD_API_KEY=${OVERLORD_API_KEY}
+
+      # CORS Origins
+      - CORS_ORIGINS=http://localhost:8000,https://www.theoverlord.ai,https://agents.theoverlord.ai
+
+      # Todoist Integration
+      - TODOIST_API_TOKEN=${TODOIST_API_TOKEN}
+
+      # Telegram Bot (optional)
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+
+      # JWT Secret for authentication
+      - JWT_SECRET=${JWT_SECRET:-your-secret-key-change-in-production}
+
+    volumes:
+      # Persist database and uploads
+      - ./data:/app/data
+      - ./uploads:/app/uploads
+      - ./logs:/app/logs
+
+      # Mount agent folders (read-only)
+      - ./Personal Agents:/app/Personal Agents:ro
+      - ./Team Agents:/app/Team Agents:ro
+      - ./Worker Agents:/app/Worker Agents:ro
+      - ./Expert Agents:/app/Expert Agents:ro
+
+    networks:
+      - agent-cleo-network
+
+    restart: unless-stopped
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Optional: PostgreSQL for production-like environment
+  # postgres:
+  #   image: postgres:15-alpine
+  #   container_name: agent-cleo-db
+  #   environment:
+  #     - POSTGRES_USER=agentcleo
+  #     - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-changeme}
+  #     - POSTGRES_DB=agentcleo
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   networks:
+  #     - agent-cleo-network
+  #   restart: unless-stopped
+
+networks:
+  agent-cleo-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local

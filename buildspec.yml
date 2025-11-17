@@ -1,0 +1,70 @@
+version: 0.2
+
+# AWS CodeBuild specification for Agent-Cleo
+# Builds Docker image and pushes to ECR
+
+env:
+  variables:
+    AWS_DEFAULT_REGION: eu-north-1
+    AWS_ACCOUNT_ID: 252321108661
+    IMAGE_REPO_NAME: agent-cleo
+    IMAGE_TAG: latest
+
+phases:
+  pre_build:
+    commands:
+      - echo "Logging in to Amazon ECR..."
+      - aws --version
+      - echo "AWS Account ID is $AWS_ACCOUNT_ID"
+      - echo "Region is $AWS_DEFAULT_REGION"
+      - echo "Repository is $IMAGE_REPO_NAME"
+
+      # Login to ECR
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+
+      # Set image URI
+      - REPOSITORY_URI=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - BUILD_TAG=${COMMIT_HASH:=latest}
+
+      - echo "Repository URI is $REPOSITORY_URI"
+      - echo "Build tag is $BUILD_TAG"
+
+  build:
+    commands:
+      - echo "Build started on `date`"
+      - echo "Building the Docker image..."
+
+      # Build Docker image (with --no-cache to force fresh build)
+      - docker build --no-cache -t $IMAGE_REPO_NAME:$IMAGE_TAG .
+      - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $REPOSITORY_URI:$IMAGE_TAG
+      - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $REPOSITORY_URI:$BUILD_TAG
+
+      - echo "Build completed on `date`"
+
+  post_build:
+    commands:
+      - echo "Push started on `date`"
+      - echo "Pushing the Docker images..."
+
+      # Push to ECR
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - docker push $REPOSITORY_URI:$BUILD_TAG
+
+      - echo "Push completed on `date`"
+      - echo "Writing image definitions file..."
+
+      # Create imagedefinitions.json for ECS deployment
+      - printf '[{"name":"agent-cleo","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+
+      - echo "Container image pushed to $REPOSITORY_URI:$IMAGE_TAG"
+      - echo "Container image pushed to $REPOSITORY_URI:$BUILD_TAG"
+
+artifacts:
+  files:
+    - imagedefinitions.json
+    - ecs-task-definition.json
+
+cache:
+  paths:
+    - '/root/.cache/**/*'

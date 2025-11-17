@@ -1,0 +1,92 @@
+{
+  "family": "agent-cleo-prod",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "1024",
+  "memory": "2048",
+  "executionRoleArn": "arn:aws:iam::252321108661:role/ecsTaskExecutionRole",
+  "taskRoleArn": "arn:aws:iam::252321108661:role/ecsTaskRole",
+  "containerDefinitions": [
+    {
+      "name": "agent-cleo",
+      "image": "252321108661.dkr.ecr.eu-north-1.amazonaws.com/agent-cleo:latest",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 8000,
+          "hostPort": 8000,
+          "protocol": "tcp"
+        }
+      ],
+      "environment": [
+        {
+          "name": "APP_NAME",
+          "value": "Agent-Cleo"
+        },
+        {
+          "name": "APP_VERSION",
+          "value": "2.0.0"
+        },
+        {
+          "name": "ENVIRONMENT",
+          "value": "production"
+        },
+        {
+          "name": "OVERLORD_API_URL",
+          "value": "https://api.theoverlord.ai/api/v1"
+        },
+        {
+          "name": "CORS_ORIGINS",
+          "value": "[\"https://www.theoverlord.ai\",\"https://agents.theoverlord.ai\"]"
+        },
+        {
+          "name": "DATABASE_URL",
+          "value": "sqlite:///./data/agents.db"
+        }
+      ],
+      "secrets": [
+        {
+          "name": "OVERLORD_API_KEY",
+          "valueFrom": "arn:aws:secretsmanager:eu-north-1:252321108661:secret:agent-cleo/overlord-api-key-VBiWuR"
+        },
+        {
+          "name": "TODOIST_API_TOKEN",
+          "valueFrom": "arn:aws:secretsmanager:eu-north-1:252321108661:secret:agent-cleo/todoist-token-5zdQvo"
+        },
+        {
+          "name": "JWT_SECRET",
+          "valueFrom": "arn:aws:secretsmanager:eu-north-1:252321108661:secret:agent-cleo/jwt-secret-RaLonu"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/agent-cleo-prod",
+          "awslogs-region": "eu-north-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "healthCheck": {
+        "command": ["CMD-SHELL", "curl -f http://localhost:8000/health || exit 1"],
+        "interval": 30,
+        "timeout": 5,
+        "retries": 3,
+        "startPeriod": 60
+      }
+    }
+  ],
+  "tags": [
+    {
+      "key": "Project",
+      "value": "Agent-Cleo"
+    },
+    {
+      "key": "Environment",
+      "value": "production"
+    },
+    {
+      "key": "Platform",
+      "value": "Overlord"
+    }
+  ]
+}
