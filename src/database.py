@@ -5,13 +5,34 @@ SQLAlchemy ORM for agent orchestration
 from sqlalchemy import create_engine, Column, Integer, String, Text, DateTime, Boolean, ForeignKey, Enum, JSON
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
+from sqlalchemy.pool import QueuePool, StaticPool
 from datetime import datetime
 import enum
 
-from src.config import settings
+from .config import settings
 
-# Create database engine
-engine = create_engine(settings.database_url, connect_args={"check_same_thread": False})
+# Create database engine with optimized settings
+if settings.database_url.startswith("sqlite"):
+    # SQLite configuration (development/testing)
+    engine = create_engine(
+        settings.database_url,
+        connect_args={"check_same_thread": False},
+        poolclass=StaticPool,  # Use static pool for SQLite
+        echo=False
+    )
+else:
+    # PostgreSQL/MySQL configuration (production)
+    engine = create_engine(
+        settings.database_url,
+        poolclass=QueuePool,
+        pool_size=10,          # Number of connections to keep open
+        max_overflow=20,       # Additional connections when pool is full
+        pool_timeout=30,       # Seconds to wait for connection
+        pool_recycle=1800,     # Recycle connections after 30 minutes
+        pool_pre_ping=True,    # Verify connections before use
+        echo=False
+    )
+
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
@@ -146,10 +167,25 @@ class DocumentDB(Base):
 # ============================================================================
 
 def get_db():
-    """Get database session"""
+    """Get database session with automatic cleanup"""
     db = SessionLocal()
     try:
         yield db
+    except Exception:
+        db.rollback()
+        raise
+    finally:
+        db.close()
+
+
+async def get_async_db():
+    """Async version of get_db for async endpoints"""
+    db = SessionLocal()
+    try:
+        yield db
+    except Exception:
+        db.rollback()
+        raise
     finally:
         db.close()
 
