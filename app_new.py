@@ -66,18 +66,11 @@ async def lifespan(app: FastAPI):
     print(f"Overlord API: {settings.overlord_api_url}")
     print(f"Base Path: {settings.base_path}")
 
-    # Discover agents at startup
-    print(f"Discovering agents from filesystem...")
-    from src.agent_utils import discover_agents
-    try:
-        _agents_cache = discover_agents(settings.base_path)
-        _agents_cache_timestamp = datetime.utcnow()
-        print(f"✓ Discovered {len(_agents_cache)} agents")
-        for agent in _agents_cache:
-            print(f"  - [{agent['tier']}] {agent['name']}")
-    except Exception as e:
-        print(f"⚠ Warning: Failed to discover agents: {e}")
-        _agents_cache = []
+    # Initialize empty cache (agent folders not in Docker container)
+    # In production, agents are managed via database, not filesystem
+    _agents_cache = []
+    _agents_cache_timestamp = datetime.utcnow()
+    print(f"Agent cache initialized (empty - agents managed via database)")
 
     print("=" * 70)
 

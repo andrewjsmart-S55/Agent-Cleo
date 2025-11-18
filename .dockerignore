@@ -1,0 +1,70 @@
+# Agent data folders (large files not needed in container)
+Personal Agents/
+Team Agents/
+Worker Agents/
+Expert Agents/
+Agent-Cleo/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+data/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Git
+.git/
+.gitignore
+
+# Logs
+*.log
+logs/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Build artifacts
+*.egg-info/
+dist/
+build/
+
+# Large data files
+*.xlsx
+*.xls
+*.csv
+*.pdf
+
+# Temp files
+*.tmp
+*.temp
+
+# Documentation
+*.md
+!requirements*.txt
+
+# Scripts not needed in container
+check_*.py
+create_*.py
+process_*.py
+parse_*.py
+make_*.py
+setup_*.py
+deploy.py
+monitor_*.py
